@@ -1,0 +1,8 @@
+endpoints:
+  mfsbsd-8:
+    path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
+    files:
+    - default.img
+    - special-edition.img
+    os: "freebsd"
+    version: "8"
