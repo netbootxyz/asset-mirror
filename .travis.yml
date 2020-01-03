@@ -7,7 +7,7 @@ services:
 
 env:
   global:
-    - BRANCH="mfsbsd8"
+    - BRANCH="mfsbsd11"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="direct_file"
