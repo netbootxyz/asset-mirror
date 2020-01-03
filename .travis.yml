@@ -14,11 +14,11 @@ env:
 
 branches:
   only:
-    - 'mfsbsd8'
+    - 'mfsbsd11'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -sL https://mfsbsd.vx.sk/files/images/8/amd64/ | grep -Po "(\d+\.)+\d+" | tail -n1)
+    export EXTERNAL_VERSION=$(curl -sL https://mfsbsd.vx.sk/files/images/11/amd64/ | grep -Po "(\d+\.)+\d+" | tail -n1)
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
