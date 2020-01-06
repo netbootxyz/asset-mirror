@@ -1,0 +1,7 @@
+endpoints:
+  dban:
+    path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
+    files:
+    - DBAN.BZI
+    os: dban
+    version: "2.3.0"
