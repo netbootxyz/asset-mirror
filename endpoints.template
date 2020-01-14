@@ -1,9 +1,9 @@
 endpoints:
-  oracle-8:
+  oracle-7:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - vmlinuz
     - initrd
     - squashfs.img
     os: "oracle"
-    version: "8"
+    version: "7"
