@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="dban"
+    - BRANCH="oracle-8"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="iso_extraction"
 
 branches:
   only:
-    - 'dban'
+    - 'oracle-8'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION="2.3.0"
+    export EXTERNAL_VERSION=$(curl -sL http://mirrors.kernel.org/oracle/OL8/ | awk -F '(href="|/">)' '/="u/ {print $2}' | tail -n 1)
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL

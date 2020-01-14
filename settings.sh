@@ -1,4 +1,6 @@
-URL="https://downloads.sourceforge.net/project/dban/dban/dban-2.3.0/dban-2.3.0_i586.iso"
+URL="http://mirrors.kernel.org/oracle/OL8/REPLACE_VERSION/x86_64/x86_64-boot.iso"
 TYPE=file
 CONTENTS="\
-DBAN.BZI|DBAN.BZI"
+isolinux/initrd.img|initrd
+isolinux/vmlinuz|vmlinuz
+images/install.img|squashfs.img"
