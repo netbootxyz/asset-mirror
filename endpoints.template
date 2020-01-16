@@ -1,9 +1,8 @@
 endpoints:
-  oracle-7:
+  parrot-net:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - vmlinuz
     - initrd
-    - squashfs.img
-    os: "oracle"
-    version: "7"
+    os: "parrotnet"
+    version: "current"

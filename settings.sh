@@ -1,6 +1,5 @@
-URL="http://mirrors.kernel.org/oracle/OL7/REPLACE_VERSION/x86_64/x86_64-boot.iso"
+URL="https://download.parrot.sh/parrot/iso/REPLACE_VERSION/Parrot-netboot-REPLACE_VERSION_x64.iso"
 TYPE=file
 CONTENTS="\
-isolinux/initrd.img|initrd
-isolinux/vmlinuz|vmlinuz
-LiveOS/squashfs.img|squashfs.img"
+initrd.gz|initrd
+linux|vmlinuz"
