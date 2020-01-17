@@ -1,9 +1,9 @@
 endpoints:
-  systemrescue:
+  blackarch-installer:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airoot.sfs
     - initrd
     - vmlinuz
-    os: "systemrescue"
+    os: "blackarch"
     version: "current"
