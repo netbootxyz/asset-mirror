@@ -1,0 +1,9 @@
+URL="https://osdn.net/projects/systemrescuecd/storage/releases/REPLACE_VERSION/systemrescuecd-REPLACE_VERSION.iso"
+TYPE=file
+CONTENTS="\
+sysresccd/x86_64/airootfs.sfs|airootfs.sfs
+sysresccd/boot/x86_64/sysresccd.img|initrd
+sysresccd/boot/x86_64/vmlinuz|vmlinuz"
+EXTRACT_INITRD="true"
+INITRD_NAME="initrd"
+INITRD_TYPE="arch-xz"
