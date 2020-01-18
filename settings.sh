@@ -1,4 +1,4 @@
-URL="https://velt.io/downloads/veltos-0.3.0-x86_64.iso"
+URL="https://downloads.sourceforge.net/project/bluestarlinux/distro/bluestar-linux-REPLACE_VERSION-x86_64.iso"
 TYPE=file
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs

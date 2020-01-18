@@ -1,9 +1,9 @@
 endpoints:
-  velt-current:
+  bluestar:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airoot.sfs
     - initrd
     - vmlinuz
-    os: "velt"
+    os: "bluestar"
     version: "current"
