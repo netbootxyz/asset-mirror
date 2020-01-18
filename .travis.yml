@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="bluestar"
+    - BRANCH="anarchy"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="initrd_patch"
 
 branches:
   only:
-    - 'bluestar'
+    - 'anarchy'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/bluestarlinux/files/latest/download | awk -F '(bluestar-linux-|-x86_64.iso)' '/-x86_64.iso/ {print $2;exit}')
+    export EXTERNAL_VERSION=$(curl -s https://api.github.com/repos/AnarchyLinux/installer/releases/latest | jq -r '.tag_name' | sed 's/^v//g')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL

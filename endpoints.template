@@ -1,9 +1,9 @@
 endpoints:
-  bluestar:
+  anarchy:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airoot.sfs
     - initrd
     - vmlinuz
-    os: "bluestar"
+    os: "anarchy"
     version: "current"
