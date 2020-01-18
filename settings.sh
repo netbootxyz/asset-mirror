@@ -1,9 +1,9 @@
-URL="https://ftp.halifax.rwth-aachen.de/blackarch/iso/blackarch-linux-netinst-REPLACE_VERSION-x86_64.iso"
+URL="https://velt.io/downloads/veltos-0.3.0-x86_64.iso"
 TYPE=file
 CONTENTS="\
-blackarch/x86_64/airootfs.sfs|airootfs.sfs
-blackarch/boot/x86_64/archiso.img|initrd
-blackarch/boot/x86_64/vmlinuz|vmlinuz"
+arch/x86_64/airootfs.sfs|airootfs.sfs
+arch/boot/x86_64/archiso.img|initrd
+arch/boot/x86_64/vmlinuz|vmlinuz"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
 INITRD_TYPE="arch-xz"
