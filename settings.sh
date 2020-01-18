@@ -1,4 +1,4 @@
-URL="https://github.com/AnarchyLinux/installer/releases/download/vREPLACE_VERSION/anarchy-REPLACE_VERSION-x86_64.iso"
+URL="https://downloads.sourceforge.net/project/revenge-installer/zen_installer-REPLACE_VERSION-x86_64.iso"
 TYPE=file
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs

@@ -1,9 +1,9 @@
 endpoints:
-  anarchy:
+  zeninstall:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airoot.sfs
     - initrd
     - vmlinuz
-    os: "anarchy"
+    os: "zeninstall"
     version: "current"

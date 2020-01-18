@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="anarchy"
+    - BRANCH="zeninstall"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="initrd_patch"
 
 branches:
   only:
-    - 'anarchy'
+    - 'zeninstall'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://api.github.com/repos/AnarchyLinux/installer/releases/latest | jq -r '.tag_name' | sed 's/^v//g')
+    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/revenge-installer/files/latest/download | awk -F '(zen_installer-|-x86_64.iso)' '/zen_installer-/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
