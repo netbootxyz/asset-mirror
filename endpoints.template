@@ -1,9 +1,9 @@
 endpoints:
-  anarchy:
+  gentoo:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - airoot.sfs
+    - image.squashfs
     - initrd
     - vmlinuz
-    os: "anarchy"
-    version: "current"
+    os: "gentoo"
+    version: "autobuilds"

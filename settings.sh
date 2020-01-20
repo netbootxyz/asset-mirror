@@ -1,9 +1,9 @@
-URL="https://github.com/AnarchyLinux/installer/releases/download/vREPLACE_VERSION/anarchy-REPLACE_VERSION-x86_64.iso"
+URL="http://distfiles.gentoo.org/releases/amd64/autobuilds/current-install-amd64-minimal/install-amd64-minimal-REPLACE_VERSION.iso"
 TYPE=file
 CONTENTS="\
-arch/x86_64/airootfs.sfs|airootfs.sfs
-arch/boot/x86_64/archiso.img|initrd
-arch/boot/x86_64/vmlinuz|vmlinuz"
+image.squashfs|image.squashfs
+boot/gentoo.igz|initrd
+boot/gentoo|vmlinuz"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
-INITRD_TYPE="arch-xz"
+INITRD_TYPE="xz"
