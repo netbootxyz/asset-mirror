@@ -1,9 +1,17 @@
 endpoints:
-  gentoo:
+  kaspersky-rescue:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - image.squashfs
+    - initrd.xz
     - initrd
     - vmlinuz
-    os: "gentoo"
-    version: "autobuilds"
+    - kernel.dat
+    - 000-core.srm
+    - 001-xorg.srm
+    - 002-xfce.srm
+    - 003-kl.srm
+    - 004-krt.srm
+    - 005-bases.srm
+    - 008-firefox.srm
+    os: "kaspersky"
+    version: "18"
