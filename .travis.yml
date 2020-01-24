@@ -18,7 +18,7 @@ branches:
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://distro.ibiblio.org/fatdog/iso/ |awk -F '(Fatdog64-|.iso)' '/Fatdog64-/ {print $4}' | tail -n1)
+    export EXTERNAL_VERSION=$(curl -s http://distro.ibiblio.org/fatdog/iso/ |awk -F '(Fatdog64-|.iso)' '/Fatdog64-/ {print $4}' | tail -n1)
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
