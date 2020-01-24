@@ -1,9 +1,8 @@
 endpoints:
-  oracle-7:
+  fatdog:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - vmlinuz
     - initrd
-    - squashfs.img
-    os: "oracle"
-    version: "7"
+    os: "fatdog"
+    version: "current"

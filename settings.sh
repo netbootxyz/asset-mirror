@@ -1,6 +1,5 @@
-URL="http://mirrors.kernel.org/oracle/OL7/REPLACE_VERSION/x86_64/x86_64-boot.iso"
+URL="http://distro.ibiblio.org/fatdog/iso/Fatdog64-REPLACE_VERSION.iso"
 TYPE=file
 CONTENTS="\
-isolinux/initrd.img|initrd
-isolinux/vmlinuz|vmlinuz
-LiveOS/squashfs.img|squashfs.img"
+initrd|initrd
+vmlinuz|vmlinuz"

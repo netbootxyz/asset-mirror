@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="oracle-7"
+    - BRANCH="fatdog"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="iso_extraction"
 
 branches:
   only:
-    - 'oracle-7'
+    - 'fatdog'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -sL http://mirrors.kernel.org/oracle/OL7/ | awk -F '(href="|/">)' '/="u/ {print $2}' | tail -n 1)
+    export EXTERNAL_VERSION=$(curl -s https://distro.ibiblio.org/fatdog/iso/ |awk -F '(Fatdog64-|.iso)' '/Fatdog64-/ {print $4}' | tail -n1)
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
