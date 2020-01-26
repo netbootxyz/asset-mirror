@@ -18,7 +18,7 @@ branches:
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/linux4m/fiest/download | awk -F '(4MLinux-|-64bit.iso)' '/4MLinux-/ {print $2;exit}')
+    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/linux4m/files/latest/download | awk -F '(4MLinux-|-64bit.iso)' '/4MLinux-/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
