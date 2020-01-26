@@ -1,9 +1,5 @@
-URL="https://downloads.sourceforge.net/project/revenge-installer/zen_installer-REPLACE_VERSION-x86_64.iso"
+URL="https://downloads.sourceforge.net/project/linux4m/31.0/livecd/updates/4MLinux-REPLACE_VERSION-64bit.iso"
 TYPE=file
 CONTENTS="\
-arch/x86_64/airootfs.sfs|airootfs.sfs
-arch/boot/x86_64/archiso.img|initrd
-arch/boot/x86_64/vmlinuz|vmlinuz"
-EXTRACT_INITRD="true"
-INITRD_NAME="initrd"
-INITRD_TYPE="arch-xz"
+boot/bzImage|airootfs.sfs
+boot/initrd.gz|initrd"

@@ -1,9 +1,8 @@
 endpoints:
-  zeninstall:
+  4mlinux:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - airoot.sfs
     - initrd
     - vmlinuz
-    os: "zeninstall"
+    os: "4mlinux"
     version: "current"
