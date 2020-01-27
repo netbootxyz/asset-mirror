@@ -1,4 +1,4 @@
-URL="https://downloads.sourceforge.net/project/thesss/TheSSS-REPLACE_VERSION-64bit.iso"
+URL="https://cfhcable.dl.sourceforge.net/project/bakandimgcd/BakAndImgCD-REPLACE_VERSION.iso"
 TYPE=file
 CONTENTS="\
 boot/bzImage|vmlinuz

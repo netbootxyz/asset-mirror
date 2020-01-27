@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="4mlinux-thesss"
+    - BRANCH="4mlinux-bakandimg"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="iso_extraction"
 
 branches:
   only:
-    - '4mlinux-thesss'
+    - '4mlinux-bakandimg'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/thesss/files/latest/download | awk -F '(TheSSS-|-64bit.iso)' '/TheSSS-/ {print $2;exit}')
+    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/bakandimgcd/files/latest/download | awk -F '(BakAndImgCD-|.iso)' '/BakAndImgCD-/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
