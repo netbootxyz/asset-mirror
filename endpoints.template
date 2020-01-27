@@ -6,3 +6,4 @@ endpoints:
     - vmlinuz
     os: "4mlinux"
     version: "current"
+    flavor: "full"
