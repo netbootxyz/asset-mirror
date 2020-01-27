@@ -1,5 +1,5 @@
 endpoints:
-  4mlinux-bakandimg
+  4mlinux-bakandimg:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
