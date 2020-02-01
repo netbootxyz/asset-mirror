@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="4mlinux"
+    - BRANCH="4mlinux-antivirus"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="iso_extraction"
 
 branches:
   only:
-    - '4mlinux'
+    - '4mlinux-antivirus'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/linux4m/files/latest/download | awk -F '(4MLinux-|-64bit.iso)' '/4MLinux-/ {print $2;exit}')
+    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/antiviruslivecd/files/latest/download | awk -F '(AntivirusLiveCD-|.iso)' '/AntivirusLiveCD-/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL

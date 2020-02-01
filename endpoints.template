@@ -1,9 +1,9 @@
 endpoints:
-  4mlinux:
+  4mlinux-antivirus:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
     - vmlinuz
     os: "4mlinux"
     version: "current"
-    flavor: "full"
+    flavor: "AntivirusLiveCD"
