@@ -2,7 +2,7 @@ endpoints:
   blackarch-installer:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - airoot.sfs
+    - airootfs.sfs
     - initrd
     - vmlinuz
     os: "blackarch"
