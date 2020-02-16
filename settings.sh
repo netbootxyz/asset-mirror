@@ -1,4 +1,4 @@
-URL="https://github.com/AnarchyLinux/installer/releases/download/vREPLACE_VERSION/anarchy-REPLACE_VERSION-x86_64.iso"
+URL="https://github.com/AnarchyLinux/installer/releases/download/vREPLACE_VERSION/anarchy-$(curl -s https://api.github.com/repos/AnarchyLinux/installer/releases/vREPLACE_VERSION | jq -r '.assets[0].browser_download_url' | awk -F '(anarchy-|-x86_64.iso)' '{print $2}')-x86_64.iso"
 TYPE=file
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs
