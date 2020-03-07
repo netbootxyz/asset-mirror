@@ -18,7 +18,7 @@ branches:
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -sL http://www.system-rescue-cd.org/Download/ | awk -F '(systemrescuecd-|.iso)' '/systemrescuecd-/ {print $2;exit}')
+    export EXTERNAL_VERSION=$(curl -sL http://www.system-rescue-cd.org/Download/ | awk -F '(systemrescuecd-amd64-|.iso)' '/systemrescuecd-/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
