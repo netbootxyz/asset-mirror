@@ -18,7 +18,7 @@ branches:
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://sourceforge.net/projects/bluestarlinux/files/latest/download | awk -F '(bluestar-linux-|-x86_64.iso)' '/-x86_64.iso/ {print $2;exit}')
+    export EXTERNAL_VERSION=$(curl -sL https://sourceforge.net/projects/bluestarlinux/files/distro/ | awk -F '(bluestar-linux-|-x86_64.iso)' '/-x86_64.iso/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
