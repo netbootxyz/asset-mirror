@@ -14,7 +14,7 @@ env:
 
 branches:
   only:
-    - 'nixos'
+    - 'nixos-20.03'
 if: type != pull_request AND tag IS blank
 script:
   - |
