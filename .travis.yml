@@ -7,18 +7,18 @@ services:
 
 env:
   global:
-    - BRANCH="breakin"
+    - BRANCH="nixos-20.03"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
     - BUILD_TYPE="direct_file"
 
 branches:
   only:
-    - 'breakin'
+    - 'nixos'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION="4.26.1"
+    export EXTERNAL_VERSION=$(curl -sL https://hydra.nixos.org/job/nixos/release-20.03/nixos.netboot.x86_64-linux/latest |awk -F '(/build/|/download/)' '/netboot.ipxe/ {print $2;exit}')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL

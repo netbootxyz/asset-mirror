@@ -1,8 +1,9 @@
 endpoints:
-  breakin:
+  nixos-20.03:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - vmlinuz
+    - bzImage
     - initrd
-    os: "breakin"
-    version: "4.26.1"
+    - netboot.ipxe
+    os: "nixos"
+    version: "20.03"

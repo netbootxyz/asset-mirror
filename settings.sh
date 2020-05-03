@@ -1,2 +1,4 @@
 DOWNLOADS="\
-https://www.advancedclustering.com/wp-content/uploads/2017/02/bootimage-4.26.1-53.tbz2|bootimage-4.26.1-53.tbz2"
+https://hydra.nixos.org/build/REPLACE_VERSION/download/1/bzImage|bzImage
+https://hydra.nixos.org/build/REPLACE_VERSION/download/2/initrd|initrd
+https://hydra.nixos.org/build/REPLACE_VERSION/download/3/netboot.ipxe|netboot.ipxe"
