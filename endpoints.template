@@ -1,9 +1,9 @@
 endpoints:
-  nixos-20.03:
+  nixos-19.09:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - bzImage
     - initrd
     - netboot.ipxe
     os: "nixos"
-    version: "20.03"
+    version: "19.09"
