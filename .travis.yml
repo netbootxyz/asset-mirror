@@ -18,7 +18,7 @@ branches:
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -s https://api.github.com/repos/AnarchyLinux/installer/releases/latest | jq -r '.tag_name' | sed 's/^v//g')
+    export EXTERNAL_VERSION=$(curl -s 'https://gitlab.com/api/v4/projects/anarchyinstaller%2Finstaller/releases' | jq -r '.[0].tag_name' | sed 's/^v//g')
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
