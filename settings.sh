@@ -1,4 +1,4 @@
-URL="https://downloads.sourceforge.net/project/anarchyinstaller/anarchy-REPLACE_VERSION-x86_64.iso"
+URL="https://osdn.net/projects/anarchy/storage/anarchy-REPLACE_VERSION-x86_64.iso"
 TYPE=file
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs
