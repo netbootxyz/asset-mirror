@@ -1,9 +1,11 @@
 endpoints:
-  systemrescue:
+  hirens:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - airootfs.sfs
-    - initrd
-    - vmlinuz
-    os: "systemrescue"
-    version: "current"
+    - bootmgr
+    - bootmgr.efi
+    - BCD
+    - boot.sdi
+    - boot.wim
+    os: "hirens"
+    version: "v1.0.1"

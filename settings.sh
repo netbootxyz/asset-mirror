@@ -1,9 +1,9 @@
-URL="https://osdn.net/projects/systemrescuecd/storage/releases/REPLACE_VERSION/systemrescue-REPLACE_VERSION-amd64.iso"
+URL="https://www.hirensbootcd.org/files/HBCD_PE_x64.iso"
 TYPE=file
 CONTENTS="\
-sysresccd/x86_64/airootfs.sfs|airootfs.sfs
-sysresccd/boot/x86_64/sysresccd.img|initrd
-sysresccd/boot/x86_64/vmlinuz|vmlinuz"
-EXTRACT_INITRD="true"
-INITRD_NAME="initrd"
-INITRD_TYPE="arch-xz"
+bootmgr|bootmgr
+bootmgr.efi|bootmgr.efi
+boot/BCD|BCD
+boot/boot.sdi|boot.sdi
+sources/boot.wim|boot.wim
+EXTRACT_INITRD="false"

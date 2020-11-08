@@ -1,24 +1,22 @@
-sudo: true
-
-language: bash
+language: shell
 
 services:
   - docker
 
 env:
   global:
-    - BRANCH="systemrescue"
+    - BRANCH="hirens"
     - GITHUB_ENDPOINT="netbootxyz/asset-mirror"
     - DEBIAN_FRONTEND="noninteractive"
-    - BUILD_TYPE="initrd_patch"
+    - BUILD_TYPE="iso_extraction"
 
 branches:
   only:
-    - 'systemrescue'
+    - 'hirens'
 if: type != pull_request AND tag IS blank
 script:
   - |
-    export EXTERNAL_VERSION=$(curl -sL http://www.system-rescue-cd.org/Download/ | awk -F '(systemrescue-|.iso)' '/systemrescue-/ {print $2; exit}' | cut -d ' ' -f 1)
+    export EXTERNAL_VERSION=$(curl -sL https://www.hirensbootcd.org/changelog/ | grep "BootCD PE x64" | head -1 | awk -F' ' {'print $5'})
   - wget https://raw.githubusercontent.com/netbootxyz/build-pipelines/master/build.sh && chmod +x build.sh
   - git config --local user.name $GIT_USERNAME
   - git config --local user.email $GIT_EMAIL
