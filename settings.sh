@@ -5,5 +5,5 @@ bootmgr|bootmgr
 bootmgr.efi|bootmgr.efi
 boot/BCD|BCD
 boot/boot.sdi|boot.sdi
-sources/boot.wim|boot.wim
+sources/boot.wim|boot.wim"
 EXTRACT_INITRD="false"
