@@ -1,9 +1,9 @@
-URL="https://osdn.net/projects/systemrescuecd/storage/releases/REPLACE_VERSION/systemrescue-REPLACE_VERSION-amd64.iso"
+URL="https://github.com/rescuezilla/rescuezilla/releases/download/REPLACE_VERSION/rescuezilla-REPLACE_VERSION-64bit.groovy.iso"
 TYPE=file
 CONTENTS="\
-sysresccd/x86_64/airootfs.sfs|airootfs.sfs
-sysresccd/boot/x86_64/sysresccd.img|initrd
-sysresccd/boot/x86_64/vmlinuz|vmlinuz"
-EXTRACT_INITRD="true"
+casper/filesystem.squashfs|filesystem.squashfs
+casper/initrd.lz|initrd
+casper/vmlinuz|vmlinuz"
+EXTRACT_INITRD="false"
 INITRD_NAME="initrd"
-INITRD_TYPE="arch-xz"
+INITRD_TYPE="gz"

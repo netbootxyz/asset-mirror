@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sL http://www.system-rescue-cd.org/Download/ | awk -F '(systemrescue-|.iso)' '/systemrescue-/ {print $2; exit}' | cut -d ' ' -f 1)
+VERSION=$(curl --silent "https://api.github.com/repos/rescuezilla/rescuezilla/releases/latest" | jq -r .tag_name)
 echo "${VERSION}"
