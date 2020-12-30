@@ -4,6 +4,6 @@ CONTENTS="\
 casper/filesystem.squashfs|filesystem.squashfs
 casper/initrd.lz|initrd
 casper/vmlinuz|vmlinuz"
-EXTRACT_INITRD="false"
+EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
 INITRD_TYPE="gz"
