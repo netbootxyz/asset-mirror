@@ -1,20 +1,23 @@
 #!/bin/sh
 
+# shellcheck source=initrd.defaults
 . /etc/initrd.defaults
+# shellcheck source=initrd.scripts
 . /etc/initrd.scripts
 
+# shellcheck source=/dev/null
 [ -e /etc/initrd.splash ] && . /etc/initrd.splash
 
 # Basic /dev content, we need it as fast as possible.
 [ ! -e /dev/console ]  && mknod /dev/console c 5 1
 [ ! -e /dev/null ]     && mknod /dev/null c 1 3
+[ ! -e /dev/random ]   && mknod /dev/random c 1 8
 [ ! -e /dev/tty ]      && mknod /dev/tty c 5 0
 [ ! -e /dev/tty0 ]     && mknod /dev/tty0 c 4 0
 [ ! -e /dev/tty1 ]     && mknod /dev/tty1 c 4 1
 [ ! -e /dev/ttyS0 ]    && mknod /dev/ttyS0 c 4 64
 [ ! -e /dev/ttyS1 ]    && mknod /dev/ttyS1 c 4 65
 [ ! -e /dev/urandom ]  && mknod /dev/urandom c 1 9
-[ ! -e /dev/random ]   && mknod /dev/random c 1 8
 [ ! -e /dev/zero ]     && mknod /dev/zero c 1 5
 
 # Take control
@@ -28,8 +31,15 @@ then
 	exit 1
 fi
 
-run mount -t proc -o noexec,nosuid,nodev proc /proc >/dev/null 2>&1
+mount -t proc -o noexec,nosuid,nodev proc /proc >/dev/null 2>&1
 mount -o remount,rw / >/dev/null 2>&1
+mount -t tmpfs -o rw,nosuid,nodev,relatime,mode=755 none /run 2>&1
+
+if [ ! -d /run/initramfs ]
+then
+	mkdir -p /run/initramfs
+	chmod 0750 /run/initramfs
+fi
 
 # Prevent superfluous printks from being printed to the console
 echo 1 > /proc/sys/kernel/printk
@@ -37,17 +47,15 @@ echo 1 > /proc/sys/kernel/printk
 if [ ! -s /etc/ld.so.cache ]
 then
 	# Looks like we were unable to run ldconfig during initramfs generation
-	[ -x /sbin/ldconfig ] && run /sbin/ldconfig
+	hash ldconfig >/dev/null 2>&1 && run ldconfig
 fi
 
 # Set up symlinks
-run /bin/busybox --install -s
+run busybox --install -s
 
 gk_ver="$(cat /etc/build_id)"
 gk_build_date="$(cat /etc/build_date)"
 kernel_ver="$(uname -r)"
-
-good_msg "${gk_ver} (${gk_build_date}). Linux kernel ${kernel_ver}"
 
 if [ "$0" = '/init' ]
 then
@@ -125,7 +133,6 @@ do
 		;;
 		dozfs*)
 			USE_ZFS=1
-			export ZPOOL_IMPORT_UDEV_TIMEOUT_MS=0
 
 			case "${x#*=}" in
 				*force*)
@@ -143,9 +150,6 @@ do
 					fi
 				;;
 			esac
-		;;
-		dobcache)
-			USE_BCACHE=1
 		;;
 		dobtrfs)
 			USE_BTRFS=1
@@ -176,9 +180,6 @@ do
 		# Module no-loads
 		doload=*)
 			MDOLIST=$(echo ${MDOLIST} ${x#*=} | sed -e 's/^\ *//;s/,/ /g')
-		;;
-		nodetect)
-			NODETECT=1
 		;;
 		noload=*)
 			MLIST=$(echo ${MLIST} ${x#*=} | sed -e 's/^\ *//;s/,/ /g')
@@ -256,6 +257,9 @@ do
 		root_keydev=*)
 			CRYPT_ROOT_KEYDEV=${x#*=}
 		;;
+		root_keydev_fstype=*)
+			CRYPT_ROOT_KEYDEV_FSTYPE=${x#*=}
+		;;
 		root_trim=*)
 			CRYPT_ROOT_TRIM=${x#*=}
 		;;
@@ -264,6 +268,9 @@ do
 		;;
 		swap_keydev=*)
 			CRYPT_SWAP_KEYDEV=${x#*=}
+		;;
+		swap_keydev_fstype=*)
+			CRYPT_SWAP_KEYDEV_FSTYPE=${x#*=}
 		;;
 		real_resume=*|resume=*)
 			REAL_RESUME=${x#*=}
@@ -293,6 +300,14 @@ do
 			fi
 			unset tmp_disabled
 		;;
+		gk.hw.use-modules_load=*)
+			tmp_disabled=${x#*=}
+			if is_true "${tmp_disabled}"
+			then
+				GK_HW_USE_MODULES_LOAD=1
+			fi
+			unset tmp_disabled
+		;;
 		gk.log.disabled=*)
 			tmp_disabled=${x#*=}
 			if is_true "${tmp_disabled}"
@@ -302,37 +317,6 @@ do
 				touch "${GK_INIT_LOG_DISABLED}"
 			fi
 			unset tmp_disabled
-		;;
-		gk.log.keep=*)
-			case "${x#*=}" in
-				[Tt][Rr][Uu][Ee])
-					GK_INIT_LOG_COPYTO="${GK_INIT_LOG_COPYTO_DEFAULT}"
-				;;
-				[Yy][Ee][Ss])
-					GK_INIT_LOG_COPYTO="${GK_INIT_LOG_COPYTO_DEFAULT}"
-				;;
-				[Yy])
-					GK_INIT_LOG_COPYTO="${GK_INIT_LOG_COPYTO_DEFAULT}"
-				;;
-				1)
-					GK_INIT_LOG_COPYTO="${GK_INIT_LOG_COPYTO_DEFAULT}"
-				;;
-				[Ff][Aa][Ll][Ss][Ee])
-					GK_INIT_LOG_COPYTO=
-				;;
-				[Nn][Oo])
-					GK_INIT_LOG_COPYTO=
-				;;
-				[Nn])
-					GK_INIT_LOG_COPYTO=
-				;;
-				0)
-					GK_INIT_LOG_COPYTO=
-				;;
-				*)
-					GK_INIT_LOG_COPYTO=${x#*=}
-				;;
-			esac
 		;;
 		gk.sshd.port=*)
 			tmp_port=${x#*=}
@@ -353,6 +337,32 @@ do
 				warn_msg "'${x}' does not look like a valid time (second) value -- ignored!"
 			fi
 			unset tmp_wait
+		;;
+		gk.udev.debug=*)
+			tmp_enabled=${x#*=}
+			if is_true "${tmp_enabled}"
+			then
+				GK_UDEV_DEBUG=1
+			fi
+			unset tmp_enabled
+		;;
+		gk.udev.timeout=*)
+			tmp_timeout=${x#*=}
+			if is_int "${tmp_timeout}"
+			then
+				GK_UDEV_TIMEOUT=${tmp_timeout}
+			else
+				warn_msg "'${x}' does not look like a valid time (second) value -- ignored!"
+			fi
+			unset tmp_timeout
+		;;
+		gk.userinteraction.disabled=*)
+			tmp_disabled=${x#*=}
+			if is_true "${tmp_disabled}"
+			then
+				touch "${GK_USERINTERACTION_DISABLED_STATEFILE}"
+			fi
+			unset tmp_disabled
 		;;
 		gk.prompt.timeout=*)
 			tmp_timeout=${x#*=}
@@ -448,9 +458,11 @@ then
 	fi
 fi
 
+good_msg "${gk_ver} (${gk_build_date}). Linux kernel ${kernel_ver}"
+
 if [ "${GK_BOOTFONT_DISABLED}" = '0' -a -e /lib/console/font ]
 then
-	[ -x /usr/sbin/setfont ] && run /usr/sbin/setfont /lib/console/font -C ${CONSOLE} 2>&1
+	hash setfont >/dev/null 2>&1 && run setfont /lib/console/font -C ${CONSOLE} 2>&1
 fi
 
 quiet_kmsg
@@ -486,15 +498,16 @@ esac
 # Verify that it is safe to use ZFS
 if [ "${USE_ZFS}" = '1' ]
 then
-	for i in /sbin/zfs /sbin/zpool
+	for i in zfs zpool
 	do
-		if [ ! -x ${i} ]
+		if ! hash ${i} >/dev/null 2>&1
 		then
 			USE_ZFS=0
-			bad_msg 'Aborting use of zfs because ${i} not found!'
+			bad_msg "Aborting use of ZFS because '${i}' not found!"
 			break
 		fi
 	done
+	unset i
 
 	[ "${USE_ZFS}" = '1' ] && MY_HWOPTS="${MY_HWOPTS} zfs"
 fi
@@ -503,13 +516,6 @@ if [ "${ROOTFSTYPE}" = "f2fs" ]
 then
 	# Hack for f2fs, which uses crc32 but does not depend on it (in many kernels at least):
 	FIRSTMODS="${FIRSTMODS} crc32_generic"
-fi
-
-if [ "${USE_BCACHE}" = '1' ]
-then
-	# Force loading of bcache module in case module loading would
-	# be skipped because $REAL_ROOT is already present
-	FIRSTMODS="${FIRSTMODS} bcache"
 fi
 
 splash 'init'
@@ -522,53 +528,77 @@ mount_devfs
 # Mount sysfs
 mount_sysfs
 
-# Initialize mdev
-good_msg 'Activating mdev ...'
-
-# Serialize hotplug events
-run touch /dev/mdev.seq
-
-# Setup hotplugging for firmware loading
-if [ -f "/proc/sys/kernel/hotplug" ]
+if [ -e /proc/sys/kernel/hotplug ]
 then
-	log_msg "COMMAND: 'echo /sbin/mdev > /proc/sys/kernel/hotplug'"
-	echo /sbin/mdev > /proc/sys/kernel/hotplug
+	log_msg "COMMAND: 'echo "" > /proc/sys/kernel/hotplug'"
+	echo "" > /proc/sys/kernel/hotplug
 fi
 
 # Load modules listed in MY_HWOPTS if /lib/modules exists for the running kernel
 if [ -z "${DO_modules}" ]
 then
-	good_msg 'Skipping module load; disabled via commandline'
+	good_msg 'Skipping module load; disabled via command-line'
 elif [ -d "/lib/modules/${KV}" ]
 then
-	good_msg 'Loading modules ...'
 	if [ -n "${FIRSTMODS}" ]
 	then
+		good_msg 'Loading first modules ...'
 		# try these modules first -- detected modules for root device:
 		modules_load firstmods ${FIRSTMODS}
 	fi
 
 	# Load appropriate kernel modules
-	if [ "${NODETECT}" != '1' ]
+	if [ "${GK_HW_USE_MODULES_LOAD}" = '1' ]
 	then
+		good_msg 'Loading modules ...'
 		for modules in ${MY_HWOPTS}
 		do
 			modules_scan ${modules}
 		done
 	fi
-	# Always eval doload=...
-	modules_load extra_load ${MDOLIST}
+
+	if [ -n "${MDOLIST}" ]
+	then
+		good_msg 'Loading modules from command-line ...'
+		modules_load extra_load ${MDOLIST}
+	fi
 else
 	good_msg 'Skipping module load; no modules in the ramdisk!'
 fi
 
-# Ensure that device nodes are properly configured
-run mdev -s || bad_msg "mdev -s failed"
+# Run debug shell if requested
+rundebugshell "before starting udevd"
+
+# Initialize udev
+if [ ! -f "/etc/udev/hwdb.bin" ]
+then
+	good_msg 'Generating /etc/udev/hwdb.bin ...'
+	run udevadm hwdb --update \
+		|| bad_msg 'Failed to generate /etc/udev/hwdb.bin!'
+fi
+
+good_msg 'Activating udev ...'
+
+udevd_cmd="run udevd --resolve-names=never"
+if [ "${GK_UDEV_DEBUG}" = '1' ]
+then
+	udevd_cmd="${udevd_cmd} --debug > ${GK_UDEV_LOG} 2>&1 &"
+else
+	udevd_cmd="${udevd_cmd} --daemon"
+fi
+eval "${udevd_cmd}"
+if [ $? -eq 0 ]
+then
+	run udevadm trigger --action=add
+	udevsettle
+else
+	bad_msg "udevd failed to run"
+fi
 
 cd /
 
 # Start iSCSI
-if [ -e /bin/iscsistart ]
+if hash iscsistart >/dev/null 2>&1
 then
 	start_iscsi
 fi
@@ -588,9 +618,6 @@ sdelay
 # Setup btrfs, see bug 303529
 setup_btrfsctl
 
-# Setup md device nodes if they dont exist
-setup_md_device
-
 # Scan volumes
 start_volumes
 
@@ -609,19 +636,13 @@ then
 	if [ "${NORESUME}" != '1' ] && [ -n "${REAL_RESUME}" ]
 	then
 		case "${REAL_RESUME}" in
-			LABEL=*|UUID=*|PARTUUID=*)
+			LABEL=*|UUID=*|PARTLABEL=*|PARTUUID=*)
 				RESUME_DEV=""
 				retval=1
 
 				if [ ${retval} -ne 0 ]
 				then
 					RESUME_DEV=$(findfs "${REAL_RESUME}" 2>/dev/null)
-					retval=$?
-				fi
-
-				if [ ${retval} -ne 0 ]
-				then
-					RESUME_DEV=$(busybox findfs "${REAL_RESUME}" 2>/dev/null)
 					retval=$?
 				fi
 
@@ -711,7 +732,7 @@ do
 		while [ "${got_good_root}" != '1' -a $(date +%s) -le ${ROOTDELAY_TIMEOUT} ]
 		do
 			case "${REAL_ROOT}" in
-				LABEL=*|UUID=*|PARTUUID=*)
+				LABEL=*|UUID=*|PARTLABEL=*|PARTUUID=*)
 					ROOT_DEV=""
 					retval=1
 
@@ -746,7 +767,7 @@ do
 					ROOT_DEV="${REAL_ROOT#*=}"
 					if [ "${ROOT_DEV}" != 'ZFS' ]
 					then
-						if [ "$(zfs get type -o value -H ${ROOT_DEV} 2>/dev/null)" = 'filesystem' ]
+						if [ "$(get_zfs_property "${ROOT_DEV}" type)" = 'filesystem' ]
 						then
 							got_good_root=1
 							REAL_ROOT=${ROOT_DEV}
@@ -759,7 +780,7 @@ do
 							continue
 						fi
 					else
-						BOOTFS=$(/sbin/zpool list -H -o bootfs 2>/dev/null)
+						BOOTFS=$(zpool list -H -o bootfs 2>/dev/null)
 						if [ "${BOOTFS}" != '-' ]
 						then
 							for i in ${BOOTFS}
@@ -779,15 +800,18 @@ do
 					fi
 				;;
 				*)
-					if [ -b "${REAL_ROOT}" ]
+					ROOT_DEV=$(readlink -f "${REAL_ROOT}")
+					if [ -b "${ROOT_DEV}" ]
 					then
 						got_good_root=1
+						REAL_ROOT=${ROOT_DEV}
 						echo
 						good_msg "Root device detected as ${REAL_ROOT}!"
 						break
 					fi
 				;;
 			esac
+			unset ROOT_DEV
 
 			if [ "${got_good_root}" != '1' ]
 			then
@@ -807,6 +831,14 @@ do
 			echo
 		fi
 
+		if [ "${USE_ZFS}" = '1' ]
+		then
+			write_env_file \
+				"${ZFS_ENC_ENV_FILE}" \
+				REAL_ROOT \
+				ROOTFSTYPE
+		fi
+
 		# Check for a block device or /dev/nfs or zfs encryption
 		if [ -n "${REAL_ROOT}" ] && [ -z "${fetch}" ] && [ "${REAL_ROOT}" = "/dev/nfs" ] || [ "${ROOTFSTYPE}" = "zfs" ] || [ -b "${REAL_ROOT}" ]
 		then
@@ -816,19 +848,29 @@ do
 				# let's check if this dataset is encrypted and ask for passphrase
 				if [ "$(zpool list -H -o feature@encryption "${REAL_ROOT%%/*}" 2>/dev/null)" = 'active' ]
 				then
-					ZFS_KEYSTATUS="$(zfs get -H -o value keystatus "${REAL_ROOT}" 2>/dev/null)"
-					ZFS_ENCRYPTIONROOT="$(zfs get -H -o value encryptionroot "${REAL_ROOT}" 2>/dev/null)"
-					if ! [ "${ZFS_ENCRYPTIONROOT}" = '-' ] || [ "${ZFS_KEYSTATUS}" = 'available' ]
+					ZFS_KEYSTATUS="$(get_zfs_property "${REAL_ROOT}" keystatus)"
+					ZFS_ENCRYPTIONROOT="$(get_zfs_property "${REAL_ROOT}" encryptionroot)"
+					if [ "${ZFS_ENCRYPTIONROOT}" != '-' ] && [ "${ZFS_KEYSTATUS}" = 'unavailable' ]
 					then
 						good_msg "Detected ZFS encryption, asking for key"
-						zfs load-key "${ZFS_ENCRYPTIONROOT}"
-						retval=$?
-						# if the key loaded fine, confirm got_good_root to exit second while loop
-						if [ ${retval} -ne 0 ]
+						run zfs load-key "${ZFS_ENCRYPTIONROOT}"
+
+						# Get new key status to check if load-key was successful
+						# or dataset has been opened by someone else in the meantime (through SSH for instance)
+						ZFS_KEYSTATUS="$(get_zfs_property "${REAL_ROOT}" keystatus)"
+
+						if [ "${ZFS_KEYSTATUS}" != 'available' ]
 						then
-							bad_msg "${ROOT_DEV} is encrypted and not mountable without key"
+							bad_msg "${REAL_ROOT} is encrypted and not mountable without key"
 							got_good_root=0
 							break
+						fi
+
+						if [ -f "${ZFS_ENC_OPENED_LOCKFILE}" ]
+						then
+							good_msg "${REAL_ROOT} device meanwhile was opened by someone else."
+						else
+							run touch "${ZFS_ENC_OPENED_LOCKFILE}"
 						fi
 					fi
 				fi
@@ -844,7 +886,6 @@ do
 	then
 		got_good_root=1
 	fi
-
 	if [ "${got_good_root}" = '1' -a "${CDROOT}" = 1 -a "${REAL_ROOT}" != "/dev/nfs" ]
 	then
 		# CD already mounted; no further checks necessary
@@ -860,7 +901,7 @@ do
 
 		if [ "${ROOTFSTYPE}" = 'zfs' ]
 		then
-			if [ "$(zfs get -H -o value mountpoint "${REAL_ROOT}")" = 'legacy' ]
+			if [ "$(get_zfs_property "${REAL_ROOT}" mountpoint)" = 'legacy' ]
 			then
 				MOUNT_STATE=rw
 			else
@@ -878,7 +919,11 @@ do
 		else
 			# If $REAL_ROOT is a symlink
 			# Resolve it like util-linux mount does
-			[ -L ${REAL_ROOT} ] && REAL_ROOT=$(readlink ${REAL_ROOT})
+			[ -L ${REAL_ROOT} ] && REAL_ROOT=$(readlink -f ${REAL_ROOT})
+
+			# determine fs -- 'auto' will not trigger module loading!
+			ROOTFSTYPE=$(determine_fs "${REAL_ROOT}" "${ROOTFSTYPE}")
+
 			# mount ro so fsck doesn't barf later
 			if [ "${REAL_ROOTFLAGS}" = '' ]
 			then
@@ -896,6 +941,11 @@ do
 		# else not a good root and start over.
 		if [ "${mountret}" = '0' ]
 		then
+			# Make sure that entries from $NEWROOT/etc/initramfs.mounts
+			# are mounted before validating $REAL_INIT in case init isn't
+			# located on $REAL_ROOT.
+			process_initramfs_mounts
+
 			init_binary_file="${NEW_ROOT}${REAL_INIT:-/sbin/init}"
 			init_binary_fallback_file="${NEW_ROOT}/bin/sh"
 
@@ -972,7 +1022,7 @@ then
 	# Find loop and looptype
 	[ -z "${LOOP}" ] && find_loop
 	[ -z "${LOOPTYPE}" ] && find_looptype
-	
+
 	if [ -z "${fetch}" ]
 	then
 		cache_cd_contents
@@ -995,7 +1045,7 @@ then
 				MOUNTTYPE="ext2"
 				;;
 			*)
-				MOUNTTYPE="${LOOPTYPE}"
+				MOUNTTYPE=$(determine_fs "/dev/mapper/root" "${MOUNTTYPE}")
 				;;
 		esac
 		run mount -t "${MOUNTTYPE}" -o ro /dev/mapper/root "${NEW_ROOT}/mnt/livecd"
@@ -1011,6 +1061,7 @@ then
 			FS_LOCATION='mnt/livecd'
 		elif [ "${LOOPTYPE}" = 'squashfs' ]
 		then
+			good_msg 'Mounting squashfs filesystem'
 			if [ ! -z "${fetch}" ]
 			then	
 				start_network
@@ -1019,9 +1070,6 @@ then
 					&& good_msg "Written to /mnt/cdrom/image.squashfs"
 				ls -lhF /mnt/cdrom/image.squashfs
 			fi
-			
-			good_msg 'Mounting squashfs filesystem'
-
 			if [ "${aufs}" = '1' ]
 			then
 				setup_squashfs_aufs
@@ -1040,10 +1088,10 @@ then
 					bad_msg "Squashfs filesystem could not be mounted, dropping into shell."
 					if [ -e /proc/filesystems ]
 					then
-						fgrep -q squashfs /proc/filesystems || \
+						grep -Fq squashfs /proc/filesystems || \
 							bad_msg "HINT: Your kernel does not know filesystem \"squashfs\"."
 					fi
-					run_shell
+					run_emergency_shell
 				}
 			fi
 
@@ -1135,11 +1183,12 @@ FSTAB
 	then
 		if [ -e "${CDROOT_PATH}/add" ]
 		then
+				# shellcheck disable=SC2045
 				for targz in $(ls ${CDROOT_PATH}/add/*.tar.gz)
 				do
 					tarname=$(basename ${targz})
 					good_msg "Adding additional package ${tarname}"
-					(cd ${NEW_ROOT} ; /bin/tar -xf ${targz})
+					(cd ${NEW_ROOT} ; tar -xf ${targz})
 				done
 		fi
 	fi
@@ -1159,7 +1208,7 @@ FSTAB
 		) ||
 		{
 			bad_msg "Copying failed, dropping into a shell."
-			run_shell
+			run_emergency_shell
 		}
 
 		# Now we do the links.
@@ -1190,6 +1239,7 @@ FSTAB
 					if [ -e "/${NEW_ROOT}/${directory}" ]
 					then
 						# It does exist, link all the individual files
+						# shellcheck disable=SC2045
 						for file in $(ls /${NEW_ROOT}/${FS_LOCATION}/${directory})
 						do
 							if [ ! -d "/${NEW_ROOT}/${FS_LOCATION}/${directory}/${file}" ] && [ ! -e "${NEW_ROOT}/${directory}/${file}" ]
@@ -1237,40 +1287,8 @@ else
 	fi
 fi # if [ "${CDROOT}" = '1' ]
 
-# Mount the additional things as required by udev & systemd
-if [ -f ${NEW_ROOT}/etc/initramfs.mounts ]
-then
-	fslist=$(get_mounts_list)
-else
-	fslist="/usr"
-fi
-
-for fs in ${fslist}
-do
-	dev=$(get_mount_device ${fs})
-	[ -z "${dev}" ] && continue
-	# Resolve it like util-linux mount does
-	[ -L ${dev} ] && dev=$(readlink ${dev})
-	# In this case, it's probably part of the filesystem
-	# and not a mountpoint
-	[ -z "${dev}" ] && continue
-	fstype=$(get_mount_fstype ${fs})
-	if get_mount_options ${fs} | fgrep -q bind
-	then
-		opts='bind'
-		dev=${NEW_ROOT}${dev}
-	else
-		# ro must be trailing, and the options will always contain at least 'defaults'
-		opts="$(get_mount_options ${fs} | strip_mount_options),ro"
-	fi
-	mnt=${NEW_ROOT}${fs}
-	cmd="mount -t ${fstype} -o ${opts} ${dev} ${mnt}"
-	good_msg "Mounting ${dev} as ${fs}: ${cmd}"
-	if ! ${cmd}
-	then
-		bad_msg "Unable to mount ${dev} for ${fs}"
-	fi
-done # for fs in $fslist; do
+# Re-run to ensure $NEWROOT/etc/initramfs.mounts was processed at least once
+process_initramfs_mounts
 
 # Execute script on the cdrom just before boot to update things if necessary
 cdupdate
@@ -1316,48 +1334,31 @@ fi
 
 cleanup
 
-# If devtmpfs is mounted, try move it to the new root
-# If that fails, try to unmount all possible mounts of
-# devtmpfs as stuff breaks otherwise
-for fs in /dev /sys /proc
-do
-	if grep -qs "${fs}" /proc/mounts
-	then
-		if ! run mount -o move ${fs} "${CHROOT}"${fs}
-		then
-			run umount ${fs} || \
-			bad_msg "Failed to move and unmount the ramdisk ${fs}!"
-		fi
-	fi
-done
-
-if [ ! -e "${CHROOT}/dev/console" ] || [ ! -e "${CHROOT}/dev/null" ]
+udevsettle
+run udevadm control --exit
+if pgrep udevd >/dev/null 2>&1
 then
-	bad_msg "ERROR: your real /dev is missing console and null"
-elif [ -e /etc/initrd.splash -a ! -e "${CHROOT}/dev/tty1" ]
-then
-	bad_msg "ERROR: your real /dev is missing tty1, required for splash"
+	warn_msg "udevd is still running -- Trying to kill it ..."
+	run pkill -9 udevd >/dev/null 2>&1
 fi
 
 # Run debug shell if requested
 rundebugshell "before entering switch_root"
-
-preserve_log
 
 # init_opts is set in the environment by the kernel when it parses the command line
 init=${REAL_INIT:-/sbin/init}
 if ! mountpoint "${CHROOT}" 1>/dev/null 2>&1
 then
 	bad_msg "${CHROOT} was not a mountpoint"
-elif chroot "${CHROOT}" /usr/bin/test ! -x /${init#/}
+elif chroot "${CHROOT}" test ! -x /${init#/}
 then
 	bad_msg "init=${init} does not exist in the rootfs!"
 elif [ $$ != 1 ]
 then
 	bad_msg "PID was not 1! switch_root would fail"
 else
-	good_msg "Switching to real root: /sbin/switch_root -c /dev/console ${CHROOT} ${init} ${init_opts}"
-	exec /sbin/switch_root -c "/dev/console" "${CHROOT}" "${init}" ${init_opts}
+	good_msg "Switching to real root: switch_root ${CHROOT} ${init} ${init_opts}"
+	exec switch_root "${CHROOT}" "${init}" ${init_opts}
 fi
 
 # If we get here, something bad has happened
