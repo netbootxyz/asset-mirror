@@ -1,14 +1,14 @@
-name: oracle-8
+name: ovirt
 
 on:
   push:
     branches:
-      - oracle-8
+      - ovirt
   schedule:
     - cron: '0 4 * * 5'
 
 env:
-  BRANCH: oracle-8
+  BRANCH: ovirt
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: oracle-8
+        ref: ovirt
 
     - name: Get SHA of actual branch instead of master
       run: |
