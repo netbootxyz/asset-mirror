@@ -3,4 +3,5 @@ TYPE=file
 CONTENTS="\
 images/pxeboot/initrd.img|initrd
 images/pxeboot/vmlinuz|vmlinuz
+images/install.img|install.img
 ovirt-node-ng-image.squashfs.img|squashfs.img"
