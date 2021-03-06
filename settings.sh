@@ -1,4 +1,4 @@
-URL="https://osdn.net/projects/systemrescuecd/storage/releases/REPLACE_VERSION/systemrescue-REPLACE_VERSION-amd64.iso"
+URL="https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/REPLACE_VERSION/systemrescue-REPLACE_VERSION-amd64.iso/download"
 TYPE=file
 CONTENTS="\
 sysresccd/x86_64/airootfs.sfs|airootfs.sfs
