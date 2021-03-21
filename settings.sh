@@ -1,9 +1,9 @@
-URL="https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/REPLACE_VERSION/systemrescue-REPLACE_VERSION-amd64.iso/download"
+URL="https://github.com/endeavouros-team/ISO/releases/download/1-EndeavourOS-ISO-releases-archive/endeavouros-REPLACE_VERSION-x86_64.iso"
 TYPE=file
 CONTENTS="\
-sysresccd/x86_64/airootfs.sfs|airootfs.sfs
-sysresccd/boot/x86_64/sysresccd.img|initrd
-sysresccd/boot/x86_64/vmlinuz|vmlinuz"
+arch/x86_64/airootfs.sfs|airootfs.sfs
+arch/boot/x86_64/archiso.img|initrd
+arch/boot/x86_64/vmlinuz-linux|vmlinuz"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
 INITRD_TYPE="arch-xz"

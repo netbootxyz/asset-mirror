@@ -1,9 +1,9 @@
 endpoints:
-  systemrescue:
+  endeavouros:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airootfs.sfs
     - initrd
     - vmlinuz
-    os: "systemrescue"
+    os: "endeavouros"
     version: "current"
