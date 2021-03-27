@@ -1,14 +1,14 @@
-name: 4mlinux
+name: ovirt
 
 on:
   push:
     branches:
-      - 4mlinux
+      - ovirt
   schedule:
     - cron: '0 4 * * 5'
 
 env:
-  BRANCH: 4mlinux
+  BRANCH: ovirt
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: 4mlinux
+        ref: ovirt
 
     - name: Get SHA of actual branch instead of master
       run: |
