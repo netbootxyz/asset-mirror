@@ -6,7 +6,6 @@ on:
       - 4mlinux
   schedule:
     - cron: '0 4 * * 5'
-  workflow_dispatch:
 
 env:
   BRANCH: 4mlinux
