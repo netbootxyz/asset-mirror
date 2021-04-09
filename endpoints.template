@@ -1,9 +1,7 @@
 endpoints:
-  rescuezilla:
+  shredos:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - filesystem.squashfs
-    - initrd
-    - vmlinuz
-    os: "rescuezilla"
+    - shredos
+    os: "shredos"
     version: "current"

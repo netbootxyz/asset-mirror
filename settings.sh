@@ -1,9 +1,2 @@
-URL="https://github.com/rescuezilla/rescuezilla/releases/download/REPLACE_VERSION/rescuezilla-REPLACE_VERSION-64bit.groovy.iso"
-TYPE=file
-CONTENTS="\
-casper/filesystem.squashfs|filesystem.squashfs
-casper/initrd.lz|initrd
-casper/vmlinuz|vmlinuz"
-EXTRACT_INITRD="false"
-INITRD_NAME="initrd"
-INITRD_TYPE="gz"
+DOWNLOADS="\
+https://github.com/PartialVolume/shredos.x86_64/releases/download/v2020.05.011_x86-64_0.30.001/shredos-2020.05.011_x86-64_0.30.001_20210226.img|default.img"
