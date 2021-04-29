@@ -1,15 +1,14 @@
-name: rescuezilla
+name: rescuezilla-focal
 
 on:
   push:
     branches:
-      - rescuezilla
+      - rescuezilla-focal
   schedule:
-    - cron: '0 4 * * 5'
-  workflow_dispatch:
+    - cron: '0 4 * * 6'
 
 env:
-  BRANCH: rescuezilla
+  BRANCH: rescuezilla-focal
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -23,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: rescuezilla
+        ref: rescuezilla-focal
 
     - name: Get SHA of actual branch instead of master
       run: |

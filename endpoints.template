@@ -1,9 +1,10 @@
 endpoints:
-  rescuezilla:
-    path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
+  rescuezilla-focal:
+    path: /ubuntu-squash/releases/download/REPLACE_RELEASE_NAME/
     files:
     - filesystem.squashfs
     - initrd
     - vmlinuz
     os: "rescuezilla"
-    version: "current"
+    version: "focal"
+    kernel: "rescuezilla-focal"

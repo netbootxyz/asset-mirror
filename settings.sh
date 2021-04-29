@@ -1,9 +1,9 @@
-URL="https://github.com/rescuezilla/rescuezilla/releases/download/REPLACE_VERSION/rescuezilla-REPLACE_VERSION-64bit.groovy.iso"
+URL="https://github.com/rescuezilla/rescuezilla/releases/download/REPLACE_VERSION/rescuezilla-REPLACE_VERSION-64bit.focal.iso"
 TYPE=file
 CONTENTS="\
-casper/filesystem.squashfs|filesystem.squashfs
+casper/vmlinuz|vmlinuz
 casper/initrd.lz|initrd
-casper/vmlinuz|vmlinuz"
+casper/filesystem.squashfs|filesystem.squashfs"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
 INITRD_TYPE="gz"
