@@ -1,0 +1,9 @@
+URL="https://downloads.sourceforge.net/project/redobackup/redorescue-REPLACE_VERSION.iso"
+TYPE=file
+CONTENTS="\
+live/filesystem.squashfs|filesystem.squashfs
+initrd|initrd
+vmlinuz|vmlinuz"
+EXTRACT_INITRD="true"
+INITRD_NAME="initrd"
+INITRD_TYPE="gz"

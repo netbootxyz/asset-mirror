@@ -1,0 +1,9 @@
+endpoints:
+  redorescue:
+    path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: "redorescue"
+    version: "buster"
