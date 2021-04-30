@@ -1,9 +1,15 @@
 endpoints:
-  blackarch-installer:
+  garuda-dragonized:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - airootfs.sfs
-    - initrd
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
     - vmlinuz
-    os: "blackarch"
+    os: "garuda"
+    flavor: "dragonized"
     version: "current"
