@@ -1,15 +1,15 @@
-name: mfsbsd12
+name: mfsbsd13
 
 on:
   push:
     branches:
-      - mfsbsd12
+      - mfsbsd13
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: mfsbsd12
+  BRANCH: mfsbsd13
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: mfsbsd12
+        ref: mfsbsd13
 
     - name: Get SHA of actual branch instead of master
       run: |
