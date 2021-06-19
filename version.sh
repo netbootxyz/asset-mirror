@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sL http://mirrors.kernel.org/oracle/OL8/ | awk -F '(href="|/">)' '/="u/ {print $2}' | awk -F'u' '{print $2}'| tail -n 1)
+VERSION=$(curl -sL https://xcp-ng.org/ | grep  "/xcp-ng-" | head -n 1 | awk -F'/' {'print $5'})
 echo "${VERSION}"

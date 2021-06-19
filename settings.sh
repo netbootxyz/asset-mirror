@@ -1,6 +1,6 @@
-URL="http://mirrors.kernel.org/oracle/OL8/uREPLACE_VERSION/x86_64/OracleLinux-R8-UREPLACE_VERSION-x86_64-dvd.iso"   
+URL="https://updates.xcp-ng.org/isos/REPLACE_VERSION/xcp-ng-REPLACE_VERSION.0-netinstall.iso"   
 TYPE=file
 CONTENTS="\
-isolinux/initrd.img|initrd
-isolinux/vmlinuz|vmlinuz
-images/install.img|squashfs.img"
+boot/xen.gz|xen.gz
+boot/vmlinuz|vmlinuz
+install.img|install.img"

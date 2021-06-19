@@ -1,15 +1,15 @@
-name: oracle-8
+name: xcp-ng
 
 on:
   push:
     branches:
-      - oracle-8
+      - xcp-ng
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: oracle-8
+  BRANCH: xcp-ng
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: oracle-8
+        ref: xcp-ng
 
     - name: Get SHA of actual branch instead of master
       run: |
