@@ -1,18 +1,18 @@
-name: gentoo
+name: proxmox
 
 on:
   push:
     branches:
-      - gentoo
+      - proxmox
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: gentoo
+  BRANCH: proxmox
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
-  BUILD_TYPE: initrd_patch
+  BUILD_TYPE: iso_extraction
   DEBIAN_FRONTEND: noninteractive
   CI_TOKEN: ${{ secrets.CI_TOKEN }}
 
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: gentoo
+        ref: proxmox
 
     - name: Get SHA of actual branch instead of master
       run: |

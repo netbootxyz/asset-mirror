@@ -1,9 +1,5 @@
-URL="https://www.mirrorservice.org/sites/distfiles.gentoo.org//releases/amd64/autobuilds/REPLACE_VERSION/install-amd64-minimal-REPLACE_VERSION.iso"
+URL="https://www.proxmox.com/en/downloads?task=callelement&format=raw&item_id=612&element=f85c494b-2b32-4109-b8c1-083cca2b7db6&method=download&args[0]=512a2af55009dfca32570fe2f05b8c2d"
 TYPE=file
 CONTENTS="\
-image.squashfs|image.squashfs
-boot/gentoo.igz|initrd
-boot/gentoo|vmlinuz"
-EXTRACT_INITRD="true"
-INITRD_NAME="initrd"
-INITRD_TYPE="xz"
+boot/linux26|vmlinuz
+boot/initrd.img|initrd"

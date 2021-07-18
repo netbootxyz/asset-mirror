@@ -1,9 +1,8 @@
 endpoints:
-  gentoo:
+  proxmox:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - image.squashfs
     - initrd
     - vmlinuz
-    os: "gentoo"
-    version: "autobuilds"
+    os: "proxmox"
+    version: "REPLACE_VERSION"
