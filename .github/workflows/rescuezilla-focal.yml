@@ -5,7 +5,8 @@ on:
     branches:
       - rescuezilla-focal
   schedule:
-    - cron: '0 4 * * 6'
+    - cron: '0 4 * * 5'
+  workflow_dispatch:
 
 env:
   BRANCH: rescuezilla-focal
