@@ -1,18 +1,18 @@
-name: bluestar
+name: xcp-ng
 
 on:
   push:
     branches:
-      - bluestar
+      - xcp-ng
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: bluestar
+  BRANCH: xcp-ng
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
-  BUILD_TYPE: initrd_patch
+  BUILD_TYPE: iso_extraction
   DEBIAN_FRONTEND: noninteractive
   CI_TOKEN: ${{ secrets.CI_TOKEN }}
 
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: bluestar
+        ref: xcp-ng
 
     - name: Get SHA of actual branch instead of master
       run: |

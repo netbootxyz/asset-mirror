@@ -6,6 +6,7 @@ on:
       - blackarch-installer
   schedule:
     - cron: '0 4 * * 5'
+  workflow_dispatch:
 
 env:
   BRANCH: blackarch-installer

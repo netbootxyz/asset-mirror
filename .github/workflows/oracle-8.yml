@@ -6,6 +6,7 @@ on:
       - oracle-8
   schedule:
     - cron: '0 4 * * 5'
+  workflow_dispatch:
 
 env:
   BRANCH: oracle-8

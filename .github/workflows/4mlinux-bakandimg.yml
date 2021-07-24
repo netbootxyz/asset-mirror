@@ -6,6 +6,7 @@ on:
       - 4mlinux-bakandimg
   schedule:
     - cron: '0 4 * * 5'
+  workflow_dispatch:
 
 env:
   BRANCH: 4mlinux-bakandimg
