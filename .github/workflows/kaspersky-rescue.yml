@@ -12,7 +12,7 @@ env:
   BRANCH: kaspersky-rescue
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
-  BUILD_TYPE: initrd_patch
+  BUILD_TYPE: initrd_layer
   DEBIAN_FRONTEND: noninteractive
   CI_TOKEN: ${{ secrets.CI_TOKEN }}
 
