@@ -3,6 +3,7 @@ endpoints:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
+    - proxmox.iso
     - vmlinuz
     os: "proxmox"
     version: "REPLACE_VERSION"
