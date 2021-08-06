@@ -1,6 +1,8 @@
 #!/bin/bash
 
+set -e
+
 cd buildout
 tar zxfv boot-amd64.tar.gz
-rm -Rf boot-amd64
+rm boot-amd64.tar.gz
 cd ..
