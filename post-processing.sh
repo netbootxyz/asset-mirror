@@ -1,9 +1,8 @@
 #!/bin/bash
 
-set -e
-
-mkdir -p buildout/tmp
-mount -t msdos -o loop,offset=646656 buildout/default.img buildout/tmp/
-cp buildout/tmp/boot/shredos buildout/
-umount buildout/tmp
-rm buildout/default.img
+cd buildout
+tar xf boot-amd64-*
+mv boot-amd64/vmlinuz vmlinuz
+mv boot-amd64/initramfs.xz initramfs.xz
+rm -Rf boot-amd64
+cd ..

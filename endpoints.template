@@ -1,7 +1,8 @@
 endpoints:
-  shredos:
+  talos:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - shredos
-    os: "shredos"
-    version: "current"
+    - vmlinuz
+    - initramfs.xz
+    os: "talos"
+    version: "REPLACE_VERSION"

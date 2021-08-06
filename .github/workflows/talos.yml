@@ -1,15 +1,15 @@
-name: shredos-x86_64
+name: talos
 
 on:
   push:
     branches:
-      - shredos-x86_64
+      - talos
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: shredos-x86_64
+  BRANCH: talos
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: shredos-x86_64
+        ref: talos
 
     - name: Get SHA of actual branch instead of master
       run: |
