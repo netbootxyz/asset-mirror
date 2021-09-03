@@ -1,5 +1,5 @@
 endpoints:
-  memtest86-free:
+  memtest86:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - memtest86-usb.img
