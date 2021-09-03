@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
-source settings.sh
-curl -Lf "${URL}" -o buildout/memtest86-usb.zip
-unzip memtest86-usb.zip
+cd buildout
+sha256sum memtest86-usb.zip
+unzip -p memtest86-usb.zip memtest86-usb.img > memtest86-usb.img
+sha256sum memtest86-usb.img
+rm memtest86-usb.zip
