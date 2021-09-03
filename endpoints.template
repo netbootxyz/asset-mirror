@@ -1,9 +1,7 @@
 endpoints:
-  proxmox:
+  memtest86-free:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - initrd
-    - proxmox.iso
-    - vmlinuz
-    os: "proxmox"
+    - memtest86-usb.img
+    os: "memtest86-free"
     version: "REPLACE_VERSION"

@@ -1,15 +1,15 @@
-name: proxmox
+name: memtest86-free
 
 on:
   push:
     branches:
-      - proxmox
+      - memtest86-free
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: proxmox
+  BRANCH: memtest86-free
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: proxmox
+        ref: memtest86-free
 
     - name: Get SHA of actual branch instead of master
       run: |
