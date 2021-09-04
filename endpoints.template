@@ -8,4 +8,4 @@ endpoints:
     - boot.sdi
     - boot.wim
     os: "hirens"
-    version: "v1.0.1"
+    version: REPLACE_VERSION

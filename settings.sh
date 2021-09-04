@@ -1,9 +1,10 @@
 URL="https://www.hirensbootcd.org/files/HBCD_PE_x64.iso"
 TYPE=file
 CONTENTS="\
-bootmgr|bootmgr
+BOOTMGR|bootmgr
 bootmgr.efi|bootmgr.efi
-Boot/BCD|BCD
-Boot/boot.sdi|boot.sdi
+boot/bcd|bcd
+boot/boot.sdi|boot.sdi
+efi/boot/bootx64.efi|bootx64.efi
 sources/boot.wim|boot.wim"
 EXTRACT_INITRD="false"
