@@ -12,4 +12,4 @@ endpoints:
     - vmlinuz
     os: "garuda"
     flavor: "dragonized"
-    version: "current"
+    version: REPLACE_VERSION
