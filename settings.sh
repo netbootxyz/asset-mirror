@@ -11,4 +11,4 @@ garuda/x86_64/livefs.sfs|livefs.sfs
 garuda/x86_64/desktopfs.sfs|desktopfs.sfs"
 EXTRACT_INITRD="true"
 INITRD_NAME="initramfs.img"
-INITRD_TYPE="gz"
+INITRD_TYPE="zstd"
