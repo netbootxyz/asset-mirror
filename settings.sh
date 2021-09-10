@@ -1,5 +1,5 @@
-URL="https://mirrors.fossho.st/garuda/iso/garuda/dr460nized/REPLACE_VERSION/garuda-dr460nized-linux-zen-REPLACE_VERSION.iso"
-TYPE=file
+URL="https://mirrors.fossho.st/garuda/iso/garuda/dr460nized/REPLACE_VERSION/garuda-dr460nized-linux-zen-REPLACE_VERSION.iso.torrent"
+TYPE=torrent
 CONTENTS="\
 boot/vmlinuz-x86_64|vmlinuz
 boot/initramfs-x86_64.img|initramfs.img
