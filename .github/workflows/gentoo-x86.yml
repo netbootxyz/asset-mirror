@@ -1,15 +1,15 @@
-name: gentoo
+name: gentoo-x86
 
 on:
   push:
     branches:
-      - gentoo
+      - gentoo-x86
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: gentoo
+  BRANCH: gentoo-x86
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: gentoo
+        ref: gentoo-x86
 
     - name: Get SHA of actual branch instead of master
       run: |

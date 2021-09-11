@@ -1,9 +1,10 @@
 endpoints:
-  gentoo:
+  gentoo-x86:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - image.squashfs
     - initrd
     - vmlinuz
     os: "gentoo"
-    version: "autobuilds"
+    version: REPLACE_VERSION
+    arch: "x86"
