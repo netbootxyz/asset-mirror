@@ -6,4 +6,5 @@ endpoints:
     - initrd
     - vmlinuz
     os: "gentoo"
-    version: "autobuilds"
+    version: REPLACE_VERSION
+    arch: "amd64"
