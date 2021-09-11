@@ -1,5 +1,5 @@
 endpoints:
-  gentoo:
+  gentoo-amd64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - image.squashfs
