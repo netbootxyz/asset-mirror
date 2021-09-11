@@ -1,5 +1,5 @@
 endpoints:
-  gentoo-x86:
+  gentoo-arm64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - image.squashfs
@@ -7,4 +7,4 @@ endpoints:
     - vmlinuz
     os: "gentoo"
     version: REPLACE_VERSION
-    arch: "x86"
+    arch: "arm64"
