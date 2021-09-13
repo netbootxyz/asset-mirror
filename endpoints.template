@@ -1,9 +1,10 @@
 endpoints:
-  proxmox:
+  tails:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - initrd
-    - proxmox.iso
     - vmlinuz
-    os: "proxmox"
+    - initrd.img
+    - tails-amd64-REPLACE_VERSION.iso
+    os: "tails"
     version: "REPLACE_VERSION"
+    arch: "amd64"

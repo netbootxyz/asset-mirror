@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=7.0-1
+VERSION=$(curl -s https://tails.boum.org/install/dvd-download/index.en.html | awk -F '(/tails-amd64-|.iso)' '/tails-amd64-/ {print $2;exit}')
 echo "${VERSION}"
