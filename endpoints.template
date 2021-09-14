@@ -1,7 +1,9 @@
 endpoints:
-  shredos:
+  hrmpf:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - shredos
-    os: "shredos"
-    version: "current"
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: "hrmpf"
+    version: "REPLACE_VERSION"
