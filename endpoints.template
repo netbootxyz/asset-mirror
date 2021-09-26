@@ -1,7 +1,7 @@
 endpoints:
-  shredos:
+  shredos-i686:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - shredos
     os: "shredos"
-    version: "current"
+    version: REPLACE_VERSION

@@ -1,9 +1,9 @@
-name: shredos-x86_64
+name: shredos-i686
 
 on:
   push:
     branches:
-      - shredos-x86_64
+      - shredos-i686
   schedule:
     - cron: '0 4 * * 5'
 
@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: shredos-x86_64
+        ref: shredos-i686
 
     - name: Get SHA of actual branch instead of master
       run: |
