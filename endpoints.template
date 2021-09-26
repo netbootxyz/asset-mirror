@@ -1,9 +1,10 @@
 endpoints:
-  systemrescue:
+  systemrescue-amd64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airootfs.sfs
     - initrd
     - vmlinuz
-    os: "systemrescue"
-    version: "current"
+    os: systemrescue
+    version: REPLACE_VERSION
+    arch: amd64
