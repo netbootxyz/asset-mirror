@@ -3,5 +3,6 @@ endpoints:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - shredos
-    os: "shredos"
+    os: shredos
     version: REPLACE_VERSION
+    arch: i686
