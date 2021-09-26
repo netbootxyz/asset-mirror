@@ -1,7 +1,8 @@
 endpoints:
-  shredos:
+  shredos-x86_64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - shredos
-    os: "shredos"
-    version: "current"
+    os: shredos
+    version: REPLACE_VERSION
+    arch: x86_64
