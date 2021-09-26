@@ -1,14 +1,14 @@
-name: systemrescue
+name: systemrescue-i686
 
 on:
   push:
     branches:
-      - systemrescue
+      - systemrescue-i686
   schedule:
     - cron: '0 4 * * 5'
 
 env:
-  BRANCH: systemrescue
+  BRANCH: systemrescue-i686
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: systemrescue
+        ref: systemrescue-i686
 
     - name: Get SHA of actual branch instead of master
       run: |

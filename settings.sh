@@ -1,9 +1,9 @@
-URL="https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/REPLACE_VERSION/systemrescue-REPLACE_VERSION-amd64.iso/download"
+URL="https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/REPLACE_VERSION/systemrescue-REPLACE_VERSION-i686.iso/download"
 TYPE=file
 CONTENTS="\
-sysresccd/x86_64/airootfs.sfs|airootfs.sfs
-sysresccd/boot/x86_64/sysresccd.img|initrd
-sysresccd/boot/x86_64/vmlinuz|vmlinuz"
+sysresccd/i686/airootfs.sfs|airootfs.sfs
+sysresccd/boot/i686/sysresccd.img|initrd
+sysresccd/boot/i686/vmlinuz|vmlinuz"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
 INITRD_TYPE="arch-xz"
