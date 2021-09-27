@@ -6,9 +6,10 @@ on:
       - shredos-i686
   schedule:
     - cron: '0 4 * * 5'
+  workflow_dispatch:
 
 env:
-  BRANCH: shredos
+  BRANCH: shredos-i686
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
