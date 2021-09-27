@@ -1,10 +1,10 @@
 endpoints:
-  gentoo-x86:
+  archlinux-32:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - image.squashfs
-    - initrd
-    - vmlinuz
-    os: "gentoo"
+    - airootfs.sfs
+    - initramfs-linux.img
+    - vmlinuz-linux
+    os: archlinux
     version: REPLACE_VERSION
-    arch: "x86"
+    arch: "i686"
