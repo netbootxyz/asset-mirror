@@ -6,6 +6,7 @@ on:
       - systemrescue-amd64
   schedule:
     - cron: '0 4 * * 5'
+  workflow_dispatch:
 
 env:
   BRANCH: systemrescue-amd64
