@@ -4,3 +4,6 @@ CONTENTS="\
 arch/boot/i686/vmlinuz-linux|vmlinuz-linux
 arch/boot/i686/initramfs-linux.img|initramfs-linux.img
 arch/i686/airootfs.sfs|airootfs.sfs"
+EXTRACT_INITRD="true"
+INITRD_NAME="initramfs-linux.img"
+INITRD_TYPE="arch-xz"
