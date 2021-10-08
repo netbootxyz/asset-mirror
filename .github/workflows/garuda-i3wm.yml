@@ -1,15 +1,15 @@
-name: garuda-bspwm
+name: garuda-i3wm
 
 on:
   push:
     branches:
-      - garuda-bspwm
+      - garuda-i3wm
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: garuda-bspwm
+  BRANCH: garuda-i3wm
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: garuda-bspwm
+        ref: garuda-i3wm
 
     - name: Get SHA of actual branch instead of master
       run: |
