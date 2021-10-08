@@ -11,5 +11,5 @@ endpoints:
     - rootfs.sfs
     - vmlinuz
     os: "garuda"
-    flavor: "qtile"
+    flavor: "bspwm"
     version: REPLACE_VERSION
