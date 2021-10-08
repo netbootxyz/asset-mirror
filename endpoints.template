@@ -1,5 +1,5 @@
 endpoints:
-  garuda-mate:
+  garuda-kde-barebones:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - amd_ucode.img
@@ -11,5 +11,5 @@ endpoints:
     - rootfs.sfs
     - vmlinuz
     os: "garuda"
-    flavor: "mate"
+    flavor: "kde-barebones"
     version: REPLACE_VERSION
