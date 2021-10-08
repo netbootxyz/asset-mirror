@@ -1,4 +1,4 @@
-URL="https://mirrors.fossho.st/garuda/iso/garuda/dr460nized-gaming/REPLACE_VERSION/garuda-dr460nized-gaming-linux-zen-REPLACE_VERSION.iso.torrent"
+URL="https://mirrors.fossho.st/garuda/iso/garuda/dr460nized-blackarch/REPLACE_VERSION/garuda-dr460nized-blackarch-linux-zen-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 boot/vmlinuz-x86_64|vmlinuz
