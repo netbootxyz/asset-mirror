@@ -1,4 +1,4 @@
-URL="https://mirrors.fossho.st/garuda/iso/garuda/i3/REPLACE_VERSION/garuda-i3-linux-zen-REPLACE_VERSION.iso.torrent"
+URL="https://mirrors.fossho.st/garuda/iso/garuda/sway/REPLACE_VERSION/garuda-sway-linux-zen-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 boot/vmlinuz-x86_64|vmlinuz

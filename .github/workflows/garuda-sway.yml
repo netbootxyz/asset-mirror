@@ -1,15 +1,15 @@
-name: garuda-i3wm
+name: garuda-sway
 
 on:
   push:
     branches:
-      - garuda-i3wm
+      - garuda-sway
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: garuda-i3wm
+  BRANCH: garuda-sway
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: garuda-i3wm
+        ref: garuda-sway
 
     - name: Get SHA of actual branch instead of master
       run: |
