@@ -1,5 +1,5 @@
 endpoints:
-  garuda-dragonized:
+  garuda-dr460nized-gaming:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - amd_ucode.img
@@ -11,5 +11,5 @@ endpoints:
     - rootfs.sfs
     - vmlinuz
     os: "garuda"
-    flavor: "dragonized"
+    flavor: "dr460nized-gaming"
     version: REPLACE_VERSION
