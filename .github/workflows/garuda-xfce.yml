@@ -1,15 +1,15 @@
-name: garuda-dr460nized
+name: garuda-xfce
 
 on:
   push:
     branches:
-      - garuda-dr460nized
+      - garuda-xfce
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: garuda-dr460nized
+  BRANCH: garuda-xfce
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: garuda-dr460nized
+        ref: garuda-xfce
 
     - name: Get SHA of actual branch instead of master
       run: |
