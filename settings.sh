@@ -1,4 +1,4 @@
-URL="https://mirrors.fossho.st/garuda/iso/garuda/lxqt-kwin/REPLACE_VERSION/garuda-lxqt-kwin-linux-zen-REPLACE_VERSION.iso.torrent"
+URL="https://mirrors.fossho.st/garuda/iso/garuda/wayfire/REPLACE_VERSION/garuda-wayfire-linux-zen-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 boot/vmlinuz-x86_64|vmlinuz

@@ -1,15 +1,15 @@
-name: garuda-lxqt-kwin
+name: garuda-wayfire
 
 on:
   push:
     branches:
-      - garuda-lxqt-kwin
+      - garuda-wayfire
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: garuda-lxqt-kwin
+  BRANCH: garuda-wayfire
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: garuda-lxqt-kwin
+        ref: garuda-wayfire
 
     - name: Get SHA of actual branch instead of master
       run: |
