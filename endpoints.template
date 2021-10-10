@@ -6,4 +6,4 @@ endpoints:
     - initrd
     - vmlinuz
     os: "redorescue"
-    version: "buster"
+    version: "REPLACE_VERSION"
