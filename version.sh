@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=7.0-1
+VERSION=$(curl -s http://download.proxmox.com/iso/SHA256SUMS  | tail -n 1 | awk -F'_' {'print $2'} | sed "s/\.iso*$//")
 echo "${VERSION}"
