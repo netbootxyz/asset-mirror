@@ -1,5 +1,5 @@
-URL="https://github.com/endeavouros-team/ISO/releases/download/1-EndeavourOS-ISO-releases-archive/endeavouros-REPLACE_VERSION-x86_64.iso"
-TYPE=file
+URL="https://github.com/endeavouros-team/ISO/releases/download/1-EndeavourOS-ISO-releases-archive/EndeavourOS_Atlantis-REPLACE_VERSION.iso.torrent"
+TYPE=torrent
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs
 arch/boot/x86_64/initramfs-linux.img|initrd
