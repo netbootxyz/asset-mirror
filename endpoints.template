@@ -1,9 +1,9 @@
 endpoints:
-  proxmox:
+  proxmox-backup-server:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
-    - proxmox.iso
+    - proxmox-backup-server.iso
     - vmlinuz
-    os: "proxmox"
+    os: "proxmox-backup-server"
     version: "REPLACE_VERSION"

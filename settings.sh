@@ -1,4 +1,4 @@
-URL="http://download.proxmox.com/iso/proxmox-ve_REPLACE_VERSION.iso"
+URL="http://download.proxmox.com/iso/proxmox-backup-server_REPLACE_VERSION.iso"
 TYPE=file
 CONTENTS="\
 boot/linux26|vmlinuz
