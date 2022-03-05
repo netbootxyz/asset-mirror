@@ -1,4 +1,4 @@
-name: proxmox-backup-server-backup-server
+name: proxmox-backup-server
 
 on:
   push:
