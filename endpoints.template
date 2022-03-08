@@ -1,9 +1,9 @@
 endpoints:
-  proxmox-backup-server:
+  proxmox-mailgateway:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
-    - proxmox-backup-server.iso
+    - proxmox-mailgateway.iso
     - vmlinuz
-    os: "proxmox-backup-server"
+    os: "proxmox-mailgateway"
     version: "REPLACE_VERSION"
