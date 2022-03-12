@@ -6,4 +6,4 @@ endpoints:
     - initrd
     - vmlinuz
     os: "rescuezilla"
-    version: "groovy"
+    version: "REPLACE_VERSION"
