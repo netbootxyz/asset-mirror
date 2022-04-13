@@ -1,0 +1,8 @@
+endpoints:
+  opsi:
+    path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
+    files:
+    - vmlinuz-x64
+    - miniroot-x64.zstd
+    os: "opsi"
+    version: "current"
