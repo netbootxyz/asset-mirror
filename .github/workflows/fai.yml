@@ -25,6 +25,10 @@ jobs:
       with:
         ref: fai
 
+    - name: Add packages to ubuntu image
+      run: |
+        sudo apt-get -y install libxml2-utils
+
     - name: Get SHA of actual branch instead of master
       run: |
         export GITHUB_SHA=$(git rev-parse HEAD)
