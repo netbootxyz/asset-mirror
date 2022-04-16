@@ -6,4 +6,4 @@ endpoints:
     - initrd
     - vmlinuz
     os: "endeavouros"
-    version: "current"
+    version: "REPLACE_VERSION"
