@@ -6,5 +6,5 @@ endpoints:
     - initrd.img
     - 9990-misc-helpers.sh
     os: "tails-beta"
-    version: "REPLACE_VERSION"
+    version: "5.0b1"
     arch: "amd64"

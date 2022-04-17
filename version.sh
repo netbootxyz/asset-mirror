@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION="5.0\~beta1"
+VERSION="5.0b1"
 echo "${VERSION}"
