@@ -1,10 +1,10 @@
 endpoints:
-  tails:
+  tails-beta:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - vmlinuz
     - initrd.img
     - 9990-misc-helpers.sh
-    os: "tails"
+    os: "tails-beta"
     version: "REPLACE_VERSION"
     arch: "amd64"
