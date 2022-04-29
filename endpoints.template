@@ -1,8 +1,8 @@
 endpoints:
-  talos:
+  talos-amd64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - vmlinuz
-    - initramfs.xz
+    - vmlinuz-amd64
+    - initramfs-amd64.xz
     os: "talos"
     version: "REPLACE_VERSION"
