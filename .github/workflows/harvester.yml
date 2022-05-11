@@ -1,18 +1,18 @@
-name: rescuezilla
+name: harvester
 
 on:
   push:
     branches:
-      - rescuezilla
+      - harvester
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: rescuezilla
+  BRANCH: harvester
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
-  BUILD_TYPE: initrd_patch
+  BUILD_TYPE: direct_file
   DEBIAN_FRONTEND: noninteractive
   CI_TOKEN: ${{ secrets.CI_TOKEN }}
 
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: rescuezilla
+        ref: harvester
 
     - name: Get SHA of actual branch instead of master
       run: |
