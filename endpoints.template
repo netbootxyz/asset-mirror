@@ -1,9 +1,9 @@
 endpoints:
-  proxmox:
+  vmware-photon-x86_64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - initrd
-    - proxmox.iso
+    - initrd.img
     - vmlinuz
-    os: "proxmox"
+    os: "vmware-photon"
     version: "REPLACE_VERSION"
+    arch: x86_64

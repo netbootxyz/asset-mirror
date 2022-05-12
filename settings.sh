@@ -1,5 +1,5 @@
-URL="http://download.proxmox.com/iso/proxmox-ve_REPLACE_VERSION.iso"
+URL="https://packages.vmware.com/photon/REPLACE_VERSION/GA/iso/photon-minimal-REPLACE_VERSION-1526e30ba.iso"
 TYPE=file
 CONTENTS="\
-boot/linux26|vmlinuz
-boot/initrd.img|initrd"
+isolinux/vmlinuz|vmlinuz
+isolinux/initrd.img|initrd.img"
