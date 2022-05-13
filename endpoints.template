@@ -1,9 +1,10 @@
 endpoints:
-  vmware-photon-x86_64:
+  vmware-photon-aarch64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd.img
     - vmlinuz
     os: "vmware-photon"
     version: "REPLACE_VERSION"
-    arch: x86_64
+    arch: aarch64
+

@@ -1,15 +1,15 @@
-name: vmware-photon-x86_64
+name: vmware-photon-aarch64
 
 on:
   push:
     branches:
-      - vmware-photon-x86_64
+      - vmware-photon-aarch64
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
 
 env:
-  BRANCH: vmware-photon-x86_64
+  BRANCH: vmware-photon-aarch64
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: vmware-photon-x86_64
+        ref: vmware-photon-aarch64
 
     - name: Get SHA of actual branch instead of master
       run: |
