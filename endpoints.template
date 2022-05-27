@@ -2,10 +2,10 @@ endpoints:
   harvester:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - harvester-REPLACE_VERSION-vmlinuz-amd64
-    - harvester-REPLACE_VERSION-initrd-amd64
-    - harvester-REPLACE_VERSION-rootfs-amd64.squashfs
-    - harvester-REPLACE_VERSION-amd64.sha512
+    - harvester-vmlinuz-amd64
+    - harvester-initrd-amd64
+    - harvester-rootfs-amd64.squashfs
+    - harvester-amd64.sha512
     - version.yaml
     os: "harvester"
     version: "REPLACE_VERSION"
