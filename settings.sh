@@ -1,4 +1,4 @@
-URL="http://mirrors.kernel.org/oracle/OL8/uREPLACE_VERSION/x86_64/OracleLinux-R8-UREPLACE_VERSION-x86_64-dvd.iso"   
+URL="https://yum.oracle.com/ISOS/OracleLinux/OL9/u0/x86_64/OracleLinux-R9-U0-x86_64-dvd.iso
 TYPE=file
 CONTENTS="\
 isolinux/initrd.img|initrd
