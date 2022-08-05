@@ -1,5 +1,5 @@
 endpoints:
-  oracle-9:
+  oracle-9-aarch64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - vmlinuz
