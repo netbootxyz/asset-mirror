@@ -6,5 +6,5 @@ endpoints:
     - initrd
     - squashfs.img
     os: "oracle"
-    version: "REPLACE_VERSION"
+    version: "9"
     arch: "x86_64"
