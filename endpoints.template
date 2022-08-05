@@ -7,3 +7,4 @@ endpoints:
     - squashfs.img
     os: "oracle"
     version: "8"
+    arch: "x86_64"
