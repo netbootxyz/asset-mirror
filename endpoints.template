@@ -1,5 +1,5 @@
 endpoints:
-  oracle-9:
+  oracle-9-x86_64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - vmlinuz
@@ -7,3 +7,4 @@ endpoints:
     - squashfs.img
     os: "oracle"
     version: "REPLACE_VERSION"
+    arch: "x86_64"
