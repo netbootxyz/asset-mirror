@@ -1,10 +1,10 @@
 endpoints:
-  rescuezilla-focal:
+  rescuezilla-jammy:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - filesystem.squashfs
     - initrd
     - vmlinuz
     os: "rescuezilla"
-    version: "focal"
-    kernel: "rescuezilla-focal"
+    version: "jammy"
+    kernel: "rescuezilla-jammy"

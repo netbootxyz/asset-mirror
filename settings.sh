@@ -1,4 +1,4 @@
-URL="https://github.com/rescuezilla/rescuezilla/releases/download/REPLACE_VERSION/rescuezilla-REPLACE_VERSION-64bit.focal.iso"
+URL="https://github.com/rescuezilla/rescuezilla/releases/download/REPLACE_VERSION/rescuezilla-REPLACE_VERSION-64bit.jammy.iso"
 TYPE=file
 CONTENTS="\
 casper/vmlinuz|vmlinuz
@@ -6,4 +6,4 @@ casper/initrd.lz|initrd
 casper/filesystem.squashfs|filesystem.squashfs"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
-INITRD_TYPE="gz"
+INITRD_TYPE="zstd"
