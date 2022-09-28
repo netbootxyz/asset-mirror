@@ -1,4 +1,4 @@
-URL="https://mirrors.fossho.st/garuda/iso/garuda/gnome/REPLACE_VERSION/garuda-gnome-linux-zen-REPLACE_VERSION.iso.torrent"
+URL="https://iso.builds.garudalinux.org/iso/garuda/gnome/REPLACE_VERSION/garuda-gnome-linux-zen-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 boot/vmlinuz-x86_64|vmlinuz
