@@ -1,10 +1,9 @@
 name: garuda-dr460nized-gaming
+
 on:
   push:
     branches:
       - garuda-dr460nized-gaming
-    paths-ignore:
-      - '.github/workflows/**'
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
