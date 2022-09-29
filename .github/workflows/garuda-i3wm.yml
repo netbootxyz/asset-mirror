@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - garuda-i3wm
+    paths-ignore:
+      - '.github/workflows/**'
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:

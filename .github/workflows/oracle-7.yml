@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - oracle-7
+    paths-ignore:
+      - '.github/workflows/**'
   schedule:
     - cron: '0 4 * * 5'
   workflow_dispatch:
