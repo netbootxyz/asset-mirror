@@ -1,5 +1,4 @@
 name: garuda-dr460nized-gaming
-
 on:
   push:
     branches:
