@@ -1,5 +1,5 @@
 endpoints:
-  garuda-i3wm:
+  garuda-cinnamon:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - amd_ucode.img
@@ -11,5 +11,5 @@ endpoints:
     - rootfs.sfs
     - vmlinuz
     os: "garuda"
-    flavor: "i3wm"
+    flavor: "cinnamon"
     version: REPLACE_VERSION
