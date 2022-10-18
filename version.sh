@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sL https://garudalinux.org/downloads.html | awk -F '(garuda-i3-linux-zen-|.iso)' '/garuda-i3-linux-zen-/ {print $2;exit}')
+VERSION=$(curl -sL https://iso.builds.garudalinux.org/iso/latest/garuda/i3/latest.iso.sha256 | awk -F'-' {'print $5'} | awk -F'.' {'print $1'})
 echo "${VERSION}"
