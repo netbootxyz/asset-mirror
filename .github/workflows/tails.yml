@@ -51,6 +51,10 @@ jobs:
         ./build.sh build ${{ env.BUILD_TYPE }}
         git tag ${{ env.GITHUB_TAG }}
 
+    - name: Generate Release Notes
+      run: |
+        echo "Release generated for OS: ${{ env.GITHUB_SHA }}" > ${{ github.workspace }}-CHANGELOG.txt
+
     - name: Create release and upload assets
       if: steps.compare.outcome == 'success' && steps.compare.conclusion == 'success'
       uses: softprops/action-gh-release@v1
@@ -61,7 +65,8 @@ jobs:
         prerelease: false
         files: buildout/*
         token: ${{ secrets.GITHUB_TOKEN }}
-
+        body_path: ${{ github.workspace }}-CHANGELOG.txt
+ 
     - name: Generate endpoints
       if: steps.compare.outcome == 'success' && steps.compare.conclusion == 'success'
       run: |
