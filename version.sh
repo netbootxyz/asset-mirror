@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=$(curl --silent "https://api.github.com/repos/PartialVolume/shredos.x86_64/releases/latest" | jq -r .tag_name)
+VERSION="0.34_20221231"
 echo "${VERSION}"
