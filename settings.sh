@@ -1,4 +1,4 @@
-URL="https://github.com/endeavouros-team/ISO/releases/download/1-EndeavourOS-ISO-releases-archive/Endeavouros_REPLACE_VERSION.iso.torrent"
+URL="https://endeavour.kamprad.net/tempo-iso/Endeavouros-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs
