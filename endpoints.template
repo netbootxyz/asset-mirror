@@ -1,9 +1,10 @@
 endpoints:
-  proxmox-ve:
+  peppermintos:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
-    - proxmox.iso
     - vmlinuz
-    os: "proxmox-ve"
+    - initrd-gtk
+    - vmlinuz-gtk
+    os: "peppermint-os"
     version: "REPLACE_VERSION"

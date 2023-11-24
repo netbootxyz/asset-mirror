@@ -1,9 +1,9 @@
-name: proxmox-ve
+name: peppermintos
 
 on:
   push:
     branches:
-      - proxmox-ve
+      - peppermintos
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: proxmox-ve
+  BRANCH: peppermintos
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: iso_extraction
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: proxmox-ve
+        ref: peppermintos
 
     - name: Get SHA of actual branch instead of master
       run: |
