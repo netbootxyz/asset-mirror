@@ -1,9 +1,9 @@
-name: mfsbsd13
+name: mfsbsd14
 
 on:
   push:
     branches:
-      - mfsbsd13
+      - mfsbsd14
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: mfsbsd13
+  BRANCH: mfsbsd14
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: mfsbsd13
+        ref: mfsbsd14
 
     - name: Get SHA of actual branch instead of master
       run: |
