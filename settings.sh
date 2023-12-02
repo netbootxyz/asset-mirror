@@ -1,4 +1,4 @@
-URL="https://enterprise.proxmox.com/iso/proxmox-mail-gateway_REPLACE_VERSION.iso"
+URL="https://enterprise.proxmox.com/iso/proxmox-mailgateway_REPLACE_VERSION.iso"
 TYPE=file
 CONTENTS="\
 boot/linux26|vmlinuz
