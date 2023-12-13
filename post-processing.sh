@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 source settings.sh
-curl -Lf "${URL}" -o buildout/proxmox-mailgateway.iso
+curl -Lf "${URL}" -o buildout/proxmox.iso
