@@ -1,9 +1,9 @@
-name: memtest86-free
+name: memtest86-plus
 
 on:
   push:
     branches:
-      - memtest86-free
+      - memtest86-plus
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: memtest86-free
+  BRANCH: memtest86-plus
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: memtest86-free
+        ref: memtest86-plus
 
     - name: Get SHA of actual branch instead of master
       run: |
