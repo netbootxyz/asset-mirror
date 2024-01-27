@@ -1,5 +1,5 @@
-URL="http://dl.amnesia.boum.org/tails/stable/tails-amd64-REPLACE_VERSION/tails-amd64-REPLACE_VERSION.iso"
-TYPE=file
+URL="https://tails.net/torrents/files/tails-amd64-REPLACE_VERSION.img.torrent"
+TYPE=torrent
 CONTENTS="\
 live/vmlinuz|vmlinuz
 live/initrd.img|initrd.img"
