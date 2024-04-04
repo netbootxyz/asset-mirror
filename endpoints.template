@@ -3,7 +3,7 @@ endpoints:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
-    - proxmox-mailgateway.iso
+    - proxmox.iso
     - vmlinuz
     os: "proxmox-mailgateway"
     version: "REPLACE_VERSION"
