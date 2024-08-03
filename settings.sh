@@ -1,2 +1,2 @@
 DOWNLOADS="\
-https://memtest.org/download/vREPLACE_VERSION/mt86plus_REPLACE_VERSION.binaries.zip|mt86plus.binaries.zip"
+https://github.com/zbm-dev/zfsbootmenu/releases/download/vREPLACE_VERSION/zfsbootmenu-recovery-x86_64-vREPLACE_VERSION-vmlinuz.EFI|zfsbootmenu-recovery-x86_64.efi"

@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sL https://memtest.org/ | grep -i iso.zip | awk -F'/' {'print $3'} | head -n1 | awk -F'v' {'print $2'})
+VERSION=$(curl --silent "https://api.github.com/repos/zbm-dev/zfsbootmenu/releases/latest"  | jq -r .tag_name | cut -c2-)
 echo "${VERSION}"

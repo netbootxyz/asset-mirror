@@ -1,10 +1,7 @@
 endpoints:
-  memtest86plus:
+  zfsbootmenu:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - memtest32.bin
-    - memtest32.efi
-    - memtest64.bin
-    - memtest64.efi
-    os: "memtest86-plus"
+    - zfsbootmenu-recovery-x86_64.efi
+    os: "zfsbootmenu"
     version: "REPLACE_VERSION"
