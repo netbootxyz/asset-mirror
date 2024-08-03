@@ -3,4 +3,4 @@ TYPE=file
 CONTENTS="\
 live/vmlinuz|vmlinuz
 live/initrd.img|initrd
-live/filesystem.squashfs"
+live/filesystem.squashfs|filesystem.squashfs"
