@@ -1,5 +1,6 @@
-URL="https://enterprise.proxmox.com/iso/proxmox-ve_REPLACE_VERSION.iso"
+URL="https://github.com/Vanilla-OS/live-iso/releases/download/2.0/VanillaOS-2-stable.VERSION.iso"
 TYPE=file
 CONTENTS="\
-boot/linux26|vmlinuz
-boot/initrd.img|initrd"
+live/vmlinuz|vmlinuz
+live/initrd.img|initrd
+live/filesystem.squashfs"

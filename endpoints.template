@@ -1,9 +1,9 @@
 endpoints:
-  proxmox-ve:
+  vanilla-os:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
-    - proxmox.iso
+    - filesystem.squashfs
     - vmlinuz
-    os: "proxmox-ve"
-    version: "REPLACE_VERSION"
+    os: "vanilla-os"
+    version: "2-REPLACE_VERSION"
