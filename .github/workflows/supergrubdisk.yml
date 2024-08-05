@@ -1,9 +1,9 @@
-name: zfsbootmenu
+name: supergrubdisk
 
 on:
   push:
     branches:
-      - zfsbootmenu
+      - supergrubdisk
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: zfsbootmenu
+  BRANCH: supergrubdisk
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: zfsbootmenu
+        ref: supergrubdisk
 
     - name: Get SHA of actual branch instead of master
       run: |

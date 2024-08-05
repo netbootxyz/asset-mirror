@@ -1,7 +1,7 @@
 endpoints:
-  zfsbootmenu:
+  supergrubdisk:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - zfsbootmenu-recovery-x86_64.efi
-    os: "zfsbootmenu"
+    - supergrub2-classic-x86_64.efi
+    os: "supergrubdisk"
     version: "REPLACE_VERSION"
