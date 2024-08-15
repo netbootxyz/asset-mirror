@@ -5,7 +5,7 @@ endpoints:
     - vmlinuz
     - initrd.img
     - 9990-misc-helpers.sh
-    - tails-amd64-REPLACE_VERSION.iso
+    - tails-amd64.iso
     os: "tails"
     version: "REPLACE_VERSION"
     arch: "amd64"
