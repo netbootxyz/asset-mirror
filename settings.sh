@@ -7,4 +7,4 @@ arch/i686/airootfs.sfs|airootfs.sfs
 arch/i686/airootfs.sha512|airootfs.sha512"
 EXTRACT_INITRD="true"
 INITRD_NAME="initramfs-linux.img"
-INITRD_TYPE="arch-xz"
+INITRD_TYPE="uncomp"
