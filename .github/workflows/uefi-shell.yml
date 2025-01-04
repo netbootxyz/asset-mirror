@@ -1,9 +1,9 @@
-name: uefi-shell-x64
+name: uefi-shell
 
 on:
   push:
     branches:
-      - uefi-shell-x64
+      - uefi-shell
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: uefi-shell-x64
+  BRANCH: uefi-shell
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: direct_file
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: uefi-shell-x64
+        ref: uefi-shell
 
     - name: Get SHA of actual branch instead of master
       run: |
