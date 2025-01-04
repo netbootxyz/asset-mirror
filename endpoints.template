@@ -1,5 +1,5 @@
 endpoints:
-  uefi-shell:
+  uefishell:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - uefi-shell-x64.efi
