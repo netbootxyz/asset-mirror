@@ -1,10 +1,7 @@
 endpoints:
-  memtest86plus:
+  uefi-shell-x64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - memtest32.bin
-    - memtest32.efi
-    - memtest64.bin
-    - memtest64.efi
-    os: "memtest86-plus"
+    - uefi-shell-x64.efi
+    os: "uefi-shell-x64"
     version: "REPLACE_VERSION"
