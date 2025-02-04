@@ -1,4 +1,4 @@
-URL="https://endeavour.kamprad.net/tempo-iso/Endeavouros-REPLACE_VERSION.iso.torrent"
+URL="https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Endeavour_neo-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs
