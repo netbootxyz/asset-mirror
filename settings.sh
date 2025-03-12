@@ -6,4 +6,4 @@ arch/boot/x86_64/initramfs-linux.img|initrd
 arch/boot/x86_64/vmlinuz-linux|vmlinuz"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
-INITRD_TYPE="zstd"
+INITRD_TYPE="xz
