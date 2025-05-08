@@ -1,2 +1,3 @@
 DOWNLOADS="\
-https://github.com/zbm-dev/zfsbootmenu/releases/download/vREPLACE_VERSION/zfsbootmenu-recovery-x86_64-vREPLACE_VERSION-linux6.12.EFI|zfsbootmenu-recovery-x86_64.efi"
+https://github.com/netbootxyz/ubuntu-spins/releases/download/0.0.2/vmlinuz|vmlinuz
+https://github.com/netbootxyz/ubuntu-spins/releases/download/REPLACE_VERSION/initrd|initrd"

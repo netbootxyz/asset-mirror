@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
-VERSION=$(curl --silent "https://api.github.com/repos/zbm-dev/zfsbootmenu/releases/latest"  | jq -r .tag_name | cut -c2-)
+VERSION=$(curl --silent "https://api.github.com/repos/netbootxyz/ubuntu-spins/releases/latest"  | jq -r .tag_name)
 echo "${VERSION}"

@@ -1,7 +1,8 @@
 endpoints:
-  zfsbootmenu:
+  ubuntu-spins:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - zfsbootmenu-recovery-x86_64.efi
-    os: "zfsbootmenu"
+    - vmlinuz
+    - initrd
+    os: "ubuntu-spins"
     version: "REPLACE_VERSION"
