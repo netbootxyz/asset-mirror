@@ -126,13 +126,14 @@ check_dev ()
 				fs_type=$(get_fstype "${FROMISO}")
 				if is_supported_fs ${fs_type}
 				then
-					mkdir -p /run/live/fromiso
-					mount -t $fs_type "${FROMISO}" /run/live/fromiso
+					modprobe loop
+					mkdir -p /live/fromiso
+					mount -t $fs_type "${FROMISO}" /live/fromiso
 					if [ "$?" != 0 ]
 					then
 						echo "Warning: unable to mount ${FROMISO}." >>/boot.log
 					fi
-					devname="/run/live/fromiso"
+					devname="/live/fromiso"
 				fi
 			else
 				echo "Warning: device for bootoption fromiso= ($FROMISO) not found.">>/boot.log
@@ -141,10 +142,10 @@ check_dev ()
  			fs_type=$(get_fstype "${ISO_DEVICE}")
  			if is_supported_fs ${fs_type}
  			then
-				mkdir -p /run/live/fromiso
-				mount -t $fs_type "$ISO_DEVICE" /run/live/fromiso
+				mkdir /live/fromiso
+				mount -t $fs_type "$ISO_DEVICE" /live/fromiso
  				ISO_NAME="$(echo $FROMISO | sed "s|$ISO_DEVICE||")"
-				loopdevname=$(setup_loop "/run/live/fromiso/${ISO_NAME}" "loop" "/sys/block/loop*" "")
+				loopdevname=$(setup_loop "/live/fromiso/${ISO_NAME}" "loop" "/sys/block/loop*" "" '')
 				devname="${loopdevname}"
 			else
 				echo "Warning: unable to mount $ISO_DEVICE." >>/boot.log
