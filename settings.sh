@@ -1,9 +1,9 @@
-URL="https://ftp.halifax.rwth-aachen.de/blackarch/iso/blackarch-linux-netinst-REPLACE_VERSION-x86_64.iso"
+URL="https://cdn77.cachyos.org/ISO/desktop/REPLACE_VERSION/cachyos-desktop-linux-REPLACE_VERSION.iso"
 TYPE=file
 CONTENTS="\
-blackarch/x86_64/airootfs.sfs|airootfs.sfs
-blackarch/boot/x86_64/initramfs-linux.img|initrd
-blackarch/boot/x86_64/vmlinuz-linux|vmlinuz"
+arch/x86_64/airootfs.sfs|airootfs.sfs
+arch/boot/x86_64/initramfs-linux-cachyos.img|initrd
+arch/boot/x86_64/vmlinuz-linux-cachyos/vmlinuz"
 EXTRACT_INITRD="true"
 INITRD_NAME="initrd"
 INITRD_TYPE="arch-xz"

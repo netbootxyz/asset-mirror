@@ -1,4 +1,5 @@
 #!/bin/bash
 set -e
-VERSION=$(curl -sL https://blackarch.org/downloads.html | awk -F '(blackarch-linux-netinst-|-x86_64.iso)' '/blackarch-linux-netinst-/ {print $2;exit}')
+#https://cdn77.cachyos.org/ISO/desktop/250422/cachyos-desktop-linux-250422.iso
+VERSION=$(curl -sL https://cachyos.org/download/ | awk -F '(cachyos-desktop-linux-|.iso)' '/cachyos-desktop-linux-/ {print $2;exit}')
 echo "${VERSION}"

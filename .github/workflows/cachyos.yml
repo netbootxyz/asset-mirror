@@ -1,9 +1,9 @@
-name: blackarch-installer
+name: cachyos
 
 on:
   push:
     branches:
-      - blackarch-installer
+      - cachyos
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: blackarch-installer
+  BRANCH: cachyos
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: blackarch-installer
+        ref: cachyos
 
     - name: Get SHA of actual branch instead of master
       run: |

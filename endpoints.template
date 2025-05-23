@@ -1,9 +1,9 @@
 endpoints:
-  blackarch-installer:
+  cachyos:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - airootfs.sfs
     - initrd
     - vmlinuz
-    os: "blackarch"
-    version: "current"
+    os: "cachyos"
+    version: "REPLACE_VERSION"
