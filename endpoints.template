@@ -5,6 +5,7 @@ endpoints:
     - airootfs.sfs
     - initrd
     - vmlinuz
+    - archiso_pxe_http
     os: systemrescue
     version: REPLACE_VERSION
     arch: amd64
