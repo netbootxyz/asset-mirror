@@ -4,6 +4,3 @@ CONTENTS="\
 sysresccd/x86_64/airootfs.sfs|airootfs.sfs
 sysresccd/boot/x86_64/sysresccd.img|initrd
 sysresccd/boot/x86_64/vmlinuz|vmlinuz"
-EXTRACT_INITRD="true"
-INITRD_NAME="initrd"
-INITRD_TYPE="uncomp"
