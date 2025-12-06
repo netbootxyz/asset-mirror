@@ -1,9 +1,9 @@
 endpoints:
-  proxmox-ve:
+  proxmox-datacenter-manager:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
     - proxmox.iso
     - vmlinuz
-    os: "proxmox-ve"
+    os: "proxmox-datacenter-manager"
     version: "REPLACE_VERSION"
