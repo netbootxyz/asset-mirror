@@ -2,9 +2,8 @@ endpoints:
   memtest86plus:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
-    - memtest32.bin
-    - memtest32.efi
-    - memtest64.bin
-    - memtest64.efi
+    - mt86p_i586
+    - mt86p_la64
+    - mt86p_x86_64
     os: "memtest86-plus"
     version: "REPLACE_VERSION"
