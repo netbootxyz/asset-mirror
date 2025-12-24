@@ -1,4 +1,4 @@
-URL="https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Mercury-REPLACE_VERSION.iso.torrent"
+URL="https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Ganymede-REPLACE_VERSION.iso.torrent"
 TYPE=torrent
 CONTENTS="\
 arch/x86_64/airootfs.sfs|airootfs.sfs
