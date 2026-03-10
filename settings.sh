@@ -1,2 +1,3 @@
-DOWNLOADS="\
-https://github.com/PartialVolume/shredos.x86_64/releases/download/vREPLACE_VERSION/shredos-REPLACE_VERSION_20260204.img|default.img"
+ASSET_URL=$(curl --silent "https://api.github.com/repos/PartialVolume/shredos.x86_64/releases/tags/vREPLACE_VERSION" \
+  | jq -r '[.assets[] | select(.name | endswith(".img")) | .browser_download_url][0]')
+DOWNLOADS="${ASSET_URL}|default.img"
