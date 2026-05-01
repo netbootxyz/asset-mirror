@@ -52,9 +52,12 @@ archiso_pxe_http_mount_handler() {
         fi
     fi
     _curl_get "${archiso_http_srv}/airootfs.${img_type}" "/${arch}"
-    if [ ! -z "$(/bin/curl -sI "${archiso_http_srv}/airootfs.${img_type}.part2" | grep "200 OK\|302 Found\|HTTP/2 200\|HTTP/2 302" || :)" ]; then
-        curl -L -f "${archiso_http_srv}/airootfs.${img_type}.part2" -o ->> "/run/archiso/httpspace/${archisobasedir}/${arch}/airootfs.${img_type}"
-    fi
+    _part=2
+    while [ ! -z "$(/bin/curl -sI "${archiso_http_srv}/airootfs.${img_type}.part${_part}" | grep "200 OK\|302 Found\|HTTP/2 200\|HTTP/2 302" || :)" ]; do
+        msg ":: Downloading '${archiso_http_srv}/airootfs.${img_type}.part${_part}'"
+        curl -L -f "${archiso_http_srv}/airootfs.${img_type}.part${_part}" -o ->> "/run/archiso/httpspace/${archisobasedir}/${arch}/airootfs.${img_type}"
+        _part=$((_part + 1))
+    done
 
     # shellcheck disable=SC2154
     # defined via initcpio's parse_cmdline()
