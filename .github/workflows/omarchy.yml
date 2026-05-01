@@ -1,9 +1,9 @@
-name: cachyos
+name: omarchy
 
 on:
   push:
     branches:
-      - cachyos
+      - omarchy
     paths-ignore:
       - '.github/workflows/**'
   schedule:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  BRANCH: cachyos
+  BRANCH: omarchy
   GITHUB_ENDPOINT: netbootxyz/asset-mirror
   DISCORD_HOOK_URL: ${{ secrets.DISCORD_HOOK_URL }}
   BUILD_TYPE: initrd_patch
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: cachyos
+        ref: omarchy
 
     - name: Get SHA of actual branch instead of master
       run: |
