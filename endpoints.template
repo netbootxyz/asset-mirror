@@ -1,5 +1,5 @@
 endpoints:
-  proxmox-ve:
+  proxmox-ve-arm64:
     path: /asset-mirror/releases/download/REPLACE_RELEASE_NAME/
     files:
     - initrd
@@ -7,3 +7,4 @@ endpoints:
     - vmlinuz
     os: "proxmox-ve"
     version: "REPLACE_VERSION"
+    arch: "arm64"
